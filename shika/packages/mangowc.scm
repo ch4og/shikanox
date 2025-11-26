@@ -21,7 +21,7 @@
 (define-public mangowc
   (package
     (name "mangowc")
-    (version "0.10.5")
+    (version "0.10.6")
     (source
      (origin
        (method git-fetch)
@@ -30,7 +30,7 @@
              (commit version)))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "0c41x56skfdcpiaw5p5hm46pkzv8327h4n258xx0h8d2s19b4i34"))))
+        (base32 "024k246s7hmvh2hv83ifxvfdzcmrjzxmj6i6j13zyjwjw80pgjlh"))))
     (build-system meson-build-system)
     (inputs (list wayland
                   wayland-protocols
