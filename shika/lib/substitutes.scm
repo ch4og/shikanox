@@ -6,7 +6,7 @@
 
 (define-public shika-subs
   '("https://mirror.yandex.ru/mirrors/guix" "https://mirror.sjtu.edu.cn/guix"
-    "https://bordeaux.guix.gnu.org" "https://nonguix-proxy.ditigal.xyz"))
+    "https://bordeaux.guix.gnu.org" "https://substitutes.nonguix.org/"))
 
 (define-public shika-subs-urls
   (string-append "--substitute-urls=\""
