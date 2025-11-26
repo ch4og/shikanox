@@ -44,7 +44,8 @@
                                       (simple-service 'env-vars-service
                                        home-environment-variables-service-type
                                        `(("NIXPKGS_ALLOW_UNFREE" . "1")
-					 ("EDITOR" . "nvim")))
+					 ("EDITOR" . "nvim")
+					 ("FONTCONFIG_PATH" . "~/.guix-home/profile/etc/fonts/")))
 
                                       (service home-dotfiles-service-type
                                                (home-dotfiles-configuration (directories '
