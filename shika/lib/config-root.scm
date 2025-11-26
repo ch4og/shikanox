@@ -1,4 +1,4 @@
-(define-module (shikalib config-root)
+(define-module (shika lib config-root)
   )
 (define-public config-root
   (let* ((source-file (current-filename))

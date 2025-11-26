@@ -1,4 +1,4 @@
-(define-module (shikapkgs networkmanager-dmenu)
+(define-module (shika packages networkmanager-dmenu)
   #:use-module (guix packages)
   #:use-module (guix git-download)
   #:use-module (guix build-system copy)

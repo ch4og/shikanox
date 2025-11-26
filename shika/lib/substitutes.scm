@@ -1,4 +1,4 @@
-(define-module (shikaguix substitutes)
+(define-module (shika lib substitutes)
   )
 
 (define-public shika-subs

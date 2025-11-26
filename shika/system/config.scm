@@ -1,4 +1,4 @@
-(define-module (shikasystem config)
+(define-module (shika system config)
   )
 (use-modules (gnu)
              (nongnu system linux-initrd)
@@ -6,8 +6,8 @@
              (nongnu packages nvidia)
              (gnu packages package-management)
              (nonguix utils)
-             (shikaguix channels)
-             (shikaguix substitutes)
+             (shika lib channels)
+             (shika lib substitutes)
              (guix gexp))
 
 (use-service-modules networking
@@ -17,7 +17,7 @@
                      security-token
                      mcron
                      shepherd
-		     dbus
+                     dbus
                      sysctl)
 
 (with-transformation replace-mesa
@@ -71,8 +71,7 @@
                                       (shell (file-append (specification->package
                                                            "fish") "/bin/fish"))
                                       (supplementary-groups '("wheel" "seat"
-                                                              "audio"
-                                                              "video"
+                                                              "audio" "video"
                                                               "netdev"
                                                               "plugdev")))
 
@@ -90,20 +89,20 @@
                                       (service nvidia-service-type)
                                       (service pcscd-service-type)
                                       (service bluetooth-service-type)
-				      ; (service polkit-wheel-service)
-                                                (service polkit-service-type)
+                                      ;; (service polkit-wheel-service)
+                                      (service polkit-service-type)
 
                                       ;; Install our NetworkManager polkit rule.
                                       (extra-special-file
                                        "/etc/polkit-1/rules.d/49-networkmanager.rules"
-                                       (plain-file
-                                        "49-networkmanager.rules"
+                                       (plain-file "49-networkmanager.rules"
                                         "polkit.addRule(function(action, subject) {
                                            if (action.id.indexOf('org.freedesktop.NetworkManager.') === 0 &&
                                                subject.user === 'ch') {
                                                return polkit.Result.YES;
                                            }
-                                         });"))                            (udev-rules-service 'fido2
+                                         });"))
+                                      (udev-rules-service 'fido2
                                                           (specification->package
                                                            "libfido2")
                                                           #:groups '("plugdev"))
@@ -127,6 +126,28 @@
                                                       mcron-service-type
                                                       (list #~(job "5 0 * * *"
                                                                "guix gc -d 1d -F 1G")))
+
+                                      (simple-service 'add-extra-hosts
+                                                      hosts-service-type
+                                                      (list (host "0.0.0.0"
+                                                             "overseauspider.yuanshen.com"
+                                                             '("log-upload-os.hoyoverse.com"
+                                                               "log-upload-os.mihoyo.com"
+                                                               "dump.gamesafe.qq.com"
+                                                               "apm-log-upload-os.hoyoverse.com"
+                                                               "zzz-log-upload-os.hoyoverse.com"
+                                                               "log-upload.mihoyo.com"
+                                                               "devlog-upload.mihoyo.com"
+                                                               "uspider.yuanshen.com"
+                                                               "sg-public-data-api.hoyoverse.com"
+                                                               "hkrpg-log-upload-os.hoyoverse.com"
+                                                               "public-data-api.mihoyo.com"
+                                                               "prd-lender.cdp.internal.unity3d.com"
+                                                               "thind-prd-knob.data.ie.unity3d.com"
+                                                               "thind-gke-usc.prd.data.corp.unity3d.com"
+                                                               "cdp.cloud.unity3d.com"
+                                                               "remote-config-proxy-prd.uca.cloud.unity3d.com"
+                                                               "pc.crashsight.wetest.net"))))
                                       (simple-service 'runtime-dir
                                        shepherd-root-service-type
                                        (list (shepherd-service (documentation
@@ -141,6 +162,7 @@
                                                                             (unless 
                                                                                     (file-exists?
                                                                                      dir)
+                                                                              
                                                                               
                                                                               (mkdir-p
                                                                                dir))

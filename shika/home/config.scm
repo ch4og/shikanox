@@ -1,4 +1,4 @@
-(define-module (shikahome config)
+(define-module (shika home config)
   )
 
 (use-modules (gnu home)
@@ -37,8 +37,7 @@
                                                                                (specification->package
                                                                                 "pinentry")
                                                                                "/bin/pinentry"))
-                                                                             (ssh-support?
-                                                                              #t)))
+                                                                             (ssh-support? #t)))
                                       (simple-service 'env-vars-service
                                        home-environment-variables-service-type
                                        `(("NIXPKGS_ALLOW_UNFREE" . "1")
@@ -46,7 +45,7 @@
 
                                       (service home-dotfiles-service-type
                                                (home-dotfiles-configuration (directories '
-                                                                             ("../shikadotfiles"))
+                                                                             ("../../dotfiles"))
                                                                             (layout 'stow)
                                                                             (packages '
                                                                              ("fastfetch"
@@ -74,13 +73,13 @@
                                        home-activation-service-type
                                        #~(begin
                                            (use-modules (guix gexp)
-                                                        (shikalib config-root))
+                                                        (shika lib config-root))
                                            (system (string-append "nix run "
-                                                    (dirname config-root)
-                                                    "/shikanix"
+                                                    (dirname (dirname config-root))
+                                                    "/nix"
                                                     " -- switch --flake "
-                                                    (dirname config-root)
-                                                    "/shikanix"))))
+                                                    (dirname (dirname config-root))
+                                                    "/nix"))))
 
                                       ) %base-home-services))))
 

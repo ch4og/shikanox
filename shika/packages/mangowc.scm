@@ -1,4 +1,4 @@
-(define-module (shikapkgs mangowc)
+(define-module (shika packages mangowc)
   #:use-module (guix packages)
   #:use-module (guix download)
   #:use-module (guix git-download)

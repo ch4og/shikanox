@@ -1,5 +1,4 @@
-(define-module (shikahome packages)
-  )
+(define-module (shika home packages))
 (use-modules (guix utils)
              (gnu packages)
              (gnu packages wm)

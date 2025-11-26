@@ -1,4 +1,4 @@
-(define-module (shikapkgs zapret)
+(define-module (shika packages zapret)
   #:use-module (guix packages)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages commencement)

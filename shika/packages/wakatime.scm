@@ -1,4 +1,4 @@
-(define-module (shikapkgs wakatime)
+(define-module (shika packages wakatime)
   #:use-module (guix packages)
   #:use-module (guix build-system go)
   #:use-module (guix git-download)

@@ -1,4 +1,4 @@
-(define-module (shikaguix channels)
+(define-module (shika lib channels)
   #:use-module (guix)
   #:use-module (guix channels)
   #:use-module (srfi srfi-1))
