@@ -3,3 +3,10 @@
 [user]
 	name = Nikita Mitasov
 	email = me@ch4og.com
+[url "ssh://git@codeberg.org/"]
+    insteadOf = https://codeberg.org/
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+[url "ssh://git@git.csmpro.ru/"]
+    insteadOf = https://git.csmpro.ru/
+
