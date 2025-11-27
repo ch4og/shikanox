@@ -76,5 +76,7 @@ Big thanks to people and projects that inspired me:
 - [[https://codeberg.org/agx-r][@agx-r]]
 - [[https://codeberg.org/daviwil][@daviwil]] & [[https://systemcrafters.net/][System Crafters]]
 - [[https://github.com/sarg/dotfiles][sarg/dotfiles]]
+- [[https://github.com/franzos/awesome-guix][franzos/awesome-guix]]
+- [[https://github.com/hiecaq/guix-config][hiecaq/guix-config]]
 
 All files that include code by others have a license note about it in their heading, original license is kept.
