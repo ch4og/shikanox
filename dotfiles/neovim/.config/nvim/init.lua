@@ -49,3 +49,4 @@ require("lazy").setup({
 vim.cmd[[colorscheme tokyonight-night]]
 vim.cmd[[highlight Normal guibg=NONE ctermbg=NONE]]
 vim.opt.clipboard="unnamedplus"
+vim.wo.relativenumber = true
