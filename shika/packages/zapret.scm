@@ -17,7 +17,7 @@
 (define-public zapret
   (package
     (name "zapret")
-    (version "72.2")
+    (version "72.3")
     (source
      (origin
        (method git-fetch)
@@ -26,7 +26,7 @@
              (commit (string-append "v" version))))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "0hd6lba8rsrwb08dp3zp1lhyjmlc5pgy9aax4x66byy6r2iani7c"))))
+        (base32 "1f1cixkwlx7zmxmdc9crqcds58pmgxxlalvhv1cwf3lxkarswzj3"))))
     (build-system gnu-build-system)
     (arguments
      (list
