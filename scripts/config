@@ -16,7 +16,10 @@
 (define (run-guix kind extra-args)
   (let ((sudo (if (string=? kind "system") "sudo" "")))
     (display (string-append "Running " kind " reconfigure...\n"))
-    (system (string-join (append (list "exec"
+    (system (string-join (append (list "cd"
+				       repo-root
+				       "&&"
+				       "exec"
                                        sudo
                                        "guix"
                                        "time-machine"
