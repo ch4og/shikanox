@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-grim -g "$(slurp)" - | swappy -f -
+grimblast --freeze copy area - && wl-paste | swappy -f -

@@ -8,8 +8,6 @@
 - [ ] Try DankMaterialShell
 - [ ] cliphist
 - [ ] swaync or dunst
-- [ ] Freeze on screenshot
-- [ ] Color picker
 - [ ] wlr-dpms
 - [ ] Screen locker (swaylock-effects)
 - [ ] Display manager
