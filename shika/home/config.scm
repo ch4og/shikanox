@@ -53,7 +53,7 @@
                                                                             (layout 'stow)
                                                                             (packages '
                                                                              ("fastfetch"
-                                                                              "kitty"
+                                                                              "ghostty"
                                                                               "mangowc"
                                                                               "emacs"
                                                                               "jujutsu"
