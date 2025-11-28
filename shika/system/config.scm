@@ -1,8 +1,7 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika system config)
-  )
+(define-module (shika system config))
 (use-modules (gnu)
              (nongnu system linux-initrd)
              (nongnu services nvidia)
@@ -14,6 +13,7 @@
              (guix gexp))
 
 (use-service-modules networking
+		     avahi
                      ssh
                      nix
                      desktop
@@ -88,6 +88,7 @@
                                                (network-manager-configuration (dns
                                                                                "dnsmasq")))
                                       (service wpa-supplicant-service-type)
+				      (service avahi-service-type)
                                       (service seatd-service-type)
                                       (service nvidia-service-type)
                                       (service pcscd-service-type)
