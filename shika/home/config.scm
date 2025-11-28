@@ -61,6 +61,17 @@
                                                                               "tmux"
                                                                               "fish"
                                                                               "rofi"))))
+				      (simple-service 'emacs-server
+						      home-shepherd-service-type
+						      (list (shepherd-service
+							     (documentation
+							      "Emacs daemon")
+							     (provision '(emacs-server))
+							     (start #~(lambda _
+									(system* "emacs" "--fg-daemon")))
+							     (stop #~(lambda _
+								       (system* "emacsclient" "--eval" "'(kill-emacs)'")))
+							     (one-shot? #f))))
                                       (service home-files-service-type
                                                `((".wakatime/wakatime-cli" ,(file-append
                                                                              (specification->package
