@@ -63,16 +63,16 @@ automatically linked into =~= via the =home-dotfiles-service-type=.
 
 * Reconfigure script
 
-This repository provides a helper script =config=.
+This repository provides a helper script =shika=.
 
 Instead of running long =guix time-machine= invocations manually, you can simply do:
 
 #+BEGIN_SRC sh
-config system
-config home
+shika system
+shika home
 #+END_SRC
 
-(Loaded to =$PATH= from =./scripts/config= with direnv)
+(Loaded to =$PATH= from =./scripts/shika= with direnv)
 
 * Acknowledgments
 
