@@ -33,6 +33,7 @@
                     "font-google-noto"
 		    "font-google-noto-emoji"
                     "fzf"
+		    "ghostty"
                     "gnupg"
                     "grim"
                     "heroic-nvidia"
