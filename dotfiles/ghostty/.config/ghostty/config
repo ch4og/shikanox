@@ -6,3 +6,5 @@ background = #000000
 background-opacity = 0.85
 window-padding-x = 3
 window-padding-balance = true
+working-directory = home
+window-inherit-working-directory = false
