@@ -1,8 +1,8 @@
 #!/usr/bin/env -S guix shell guile -- guile --no-auto-compile
-!#
+;; -*- mode: scheme -*-
 ;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
-;; vim: filetype=scheme
+!#
 
 (define repo-root
   (dirname (dirname (canonicalize-path (current-filename)))))
