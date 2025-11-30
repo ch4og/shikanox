@@ -11,7 +11,7 @@
           (name 'guix)
           (url "https://git.guix.gnu.org/guix.git")
           (branch "master")
-          (commit "4932444387a3ea656e3d64829b3da174c98006ea")
+          (commit "01bb0f2aa11918ce2b9187b9d53c1da62e40d775")
           (introduction
            (make-channel-introduction
             "9edb3f66fd807b096b48283debdcddccfea34bad"
@@ -21,7 +21,7 @@
           (name 'nonguix)
           (url "https://gitlab.com/nonguix/nonguix.git")
           (branch "master")
-          (commit "0f68c1684169cbef8824fb246dfefa3e6832225b")
+          (commit "82be0b7adaaaa7a98d47382d7f72dd2e31d8e6d8")
           (introduction
            (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
@@ -30,7 +30,7 @@
 	(channel
 	 (name 'quickshell)
 	 (url "https://github.com/ch4og/quickshell.git")
-	 (branch "fix-qt")
-	 (commit "902c3603301b696429727e1334fa5d9715d967ff"))))
+	 (branch "master")
+	 (commit "95364813e0882ea87955eec8d67a6bb5b74341d4"))))
 
 shika-chs
