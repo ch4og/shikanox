@@ -7,11 +7,12 @@
              (gnu packages wm)
              (gnu packages dns)
              (guix transformations)
-             (nongnu packages nvidia))
+             (nongnu packages nvidia)
+	     (quickshell))
 (define transform
   (options->transformation '((with-graft . "mesa=nvda"))))
 
-(append (specifications->packages '("bind:utils"))
+(append (append (specifications->packages '("bind:utils")) `(,quickshell-git))
         (map transform
              (map specification->package
                   '("bat"
@@ -57,7 +58,6 @@
                     "pinentry"
                     "pipewire"
                     "qbittorrent-enhanced"
-                    "quickshell"
                     "remmina"
                     "reuse"
                     "ripgrep"

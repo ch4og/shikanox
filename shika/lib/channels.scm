@@ -26,6 +26,11 @@
            (make-channel-introduction
             "897c1a470da759236cc11798f4e0a5f7d4d59fbc"
             (openpgp-fingerprint
-             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))))
+             "2A39 3FFF 68F4 EF7A 3D29  12AF 6F51 20A0 22FB B2D5"))))
+	(channel
+	 (name 'quickshell)
+	 (url "https://github.com/ch4og/quickshell.git")
+	 (branch "fix-qt")
+	 (commit "902c3603301b696429727e1334fa5d9715d967ff"))))
 
 shika-chs
