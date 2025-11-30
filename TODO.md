@@ -18,3 +18,4 @@
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
 - [ ] wl-mirror
+- [ ] Fix audio crackings in some wine games
