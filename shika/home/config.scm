@@ -58,6 +58,7 @@
                                                                               "emacs"
                                                                               "jujutsu"
                                                                               "git"
+                                                                              "protonup"
                                                                               "tmux"
                                                                               "fish"
                                                                               "rofi"))))
