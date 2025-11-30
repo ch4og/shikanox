@@ -31,6 +31,7 @@
                     "font-awesome-nonfree"
                     "fontforge"
                     "font-google-noto"
+		    "font-google-noto-sans-cjk"
 		    "font-google-noto-emoji"
                     "fzf"
 		    "ghostty"
