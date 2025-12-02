@@ -10,6 +10,7 @@
 (add-to-load-path repo-root)
 
 (use-modules (ice-9 match)
+             (ice-9 ftw)
              (shika lib channels)
              (shika lib substitutes))
 
@@ -17,9 +18,9 @@
   (let ((sudo (if (string=? kind "system") "sudo" "")))
     (display (string-append "Running " kind " reconfigure...\n"))
     (system (string-join (append (list "cd"
-				       repo-root
-				       "&&"
-				       "exec"
+                                       repo-root
+                                       "&&"
+                                       "exec"
                                        sudo
                                        "guix"
                                        "time-machine"
@@ -31,18 +32,41 @@
                                        (string-append repo-root "/shika/" kind "/config.scm")
                                        shika-subs-urls
                                        "-L"
-				       repo-root) extra-args) " "))))
+                                       repo-root) extra-args) " "))))
+
+(define (run-refresh extra-args)
+  (for-each
+   (lambda (name)
+     (format #t "Refreshing ~a~%" name)
+     (system (string-join (append (list "cd"
+                                        repo-root
+                                        "&&"
+                                        "guix"
+                                        "refresh"
+                                        "-L"
+                                        repo-root
+                                        "-u"
+                                        "--select="
+                                        "'module:(shika packages " name ")'")
+                                  extra-args) " ")))
+   (map
+    (lambda (f) (substring f 0 (- (string-length f) 4)))
+    (filter
+     (lambda (f) (string-suffix? ".scm" f))
+     (scandir (string-append repo-root "/shika/packages"))))))
 
 (define (usage command)
   (display (string-append "Usage: " command " COMMAND [args...]\n\n"))
   (display "Commands:\n")
   (display "  system   [args...]  - reconfigure system\n")
-  (display "  home     [args...]  - reconfigure home\n"))
+  (display "  home     [args...]  - reconfigure home\n")
+  (display "  refresh  [args...]  - refresh channel packages\n"))
 
 (define (selection cmd)
   (match (cdr cmd)
     (("system" . rest) (run-guix "system" rest))
     (("home" . rest) (run-guix "home" rest))
+    (("refresh" . rest) (run-refresh rest))
     (_ (usage (car cmd)) (exit 1))))
 
 (selection (command-line))
