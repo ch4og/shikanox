@@ -6,9 +6,7 @@
 - [ ] Deal with portals (xdg-desktop-portal-wlr)
 - [ ] Try DankMaterialShell
 - [ ] wlr-dpms
-- [ ] Screen locker (swaylock-effects)
 - [ ] Display manager
-- [ ] sway-audio-idle-inhibit
 - [ ] swayidle
 - [ ] swayosd
 - [ ] satty
