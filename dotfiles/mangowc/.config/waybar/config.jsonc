@@ -27,7 +27,7 @@
       "format": "{usage}% "
     },
     "custom/spotify": {
-      "exec": "$HOME/.config/waybar/spotify.sh 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/spotify.sh 2> /dev/null",
       "exec-if": "pgrep spotify",
       "format": "{icon} {}",
       "format-icons": {

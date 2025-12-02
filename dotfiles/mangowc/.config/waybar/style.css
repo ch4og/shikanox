@@ -1,43 +1,136 @@
-/* Copyright © 2025 Nikita Mitasov <mitanick@ya.ru> */
+
+@define-color background #1b181d;
+@define-color foreground #000000;
+@define-color cursor     #000000;
+@define-color border     #000000;
+
+@define-color color0  #1b181d;
+@define-color color1  #382238;
+@define-color color2  #36203b;
+@define-color color3  #363a48;
+@define-color color4  #b6a9a8;
+@define-color color5  #867990;
+@define-color color6  #868085;
+@define-color color7  #755961;
+@define-color color8  #19141b;
+@define-color color9  #000000;
+@define-color color10 #000004;
+@define-color color11 #000000;
+@define-color color12 #040000;
+@define-color color13 #00105a;
+@define-color color14 #1f0000;
+
+
+
+
 * {
   border: none;
   border-radius: 0;
-  font-family: "Noto Sans";
+  font-family: "Noto Sans", sans-serif;
   font-size: 13px;
   min-height: 0;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  background: transparent;
+  
+  color: @color4;
 }
 
-#window {
-  font-weight: bold;
-  font-family: "Ubuntu";
+
+#waybar > box {
+  margin: 6px 6px 0px 6px; 
 }
-/*
+
+
+
+.modules-left > widget,
+.modules-center > widget,
+.modules-right > widget {
+  padding: 0 4px;
+}
+
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+  background: alpha(@background, 0.95);
+  border-radius: 8px;
+  padding: 3px 8px;
+  margin: 0 4px;
+  border: 1px solid alpha(@color2, 0.9);
+  color: @color4; 
+}
+
+
+.modules-center > widget > * {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+
 #workspaces {
-    padding: 0 5px;
+  padding: 0 2px;
 }
-*/
 
 #workspaces button {
-  padding: 0 5px;
   background: transparent;
-  color: white;
-  border-top: 2px solid transparent;
+  color: @color4;
+  padding: 3px 9px;
+  margin: 0 2px;
+  border-radius: 6px;
+  border: 1px solid transparent;
 }
+
+#workspaces button:hover {
+  background: alpha(@color1, 0.25);
+  color: @color4;
+}
+
 
 #workspaces button.active {
-  color: #5d6fc9;
-  border-top: 2px solid #5d6fc9;
+  background: @color1;
+  color: @color4;
+  border-color: alpha(@color4, 0.7);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-weight: 600;
 }
 
-#mode {
-  background: #64727d;
-  border-bottom: 3px solid white;
+
+#workspaces button.urgent {
+  background: @color14;
+  color: @color4;
+  border-color: @color4;
 }
+
+#workspaces button label {
+  padding: 0;
+}
+
+
+
+#window {
+  font-weight: 600;
+  color: @color4;
+}
+
+#window.empty {
+  color: alpha(@color4, 0.45);
+}
+
+
+
+#mode {
+  background: @color2;
+  color: @color4;
+  border-radius: 8px;
+  border: 1px solid @color1;
+  padding: 3px 10px;
+}
+
+
 
 #clock,
 #battery,
@@ -48,61 +141,117 @@ window#waybar {
 #custom-spotify,
 #tray,
 #mode {
-  padding: 0 3px;
-  margin: 0 2px;
+  margin: 0 3px;
 }
+
+
 
 #clock {
-  /* font-weight: bold; */
+  color: @color4;
+  font-weight: 500;
 }
+
+
 
 #battery {
-}
-
-#battery icon {
-  color: red;
+  color: @color4;
 }
 
 #battery.charging {
+  
+  color: @color5;
 }
 
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: black;
+@keyframes battery-warn {
+  0% {
+    background-color: alpha(@color14, 0.2);
+    color: @color4;
+  }
+  100% {
+    background-color: alpha(@color14, 0.4);
+    color: @color4;
   }
 }
 
 #battery.warning:not(.charging) {
-  color: white;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation: battery-warn 0.7s ease-in-out infinite alternate;
+  border-radius: 8px;
+}
+
+
+
+#cpu,
+#memory {
+  color: @color4;
 }
 
 #cpu {
+  border-right: 1px solid alpha(@color2, 0.8);
+  padding-right: 7px;
 }
 
 #memory {
+  padding-left: 7px;
 }
 
+
+
 #network {
+  color: @color4;
 }
 
 #network.disconnected {
-  background: #f53c3c;
+  background: @color14;
+  color: @color4;
+  border-radius: 8px;
 }
 
+
+
 #pulseaudio {
+  color: @color4;
 }
 
 #pulseaudio.muted {
+  color: alpha(@color4, 0.5);
+  background: alpha(@color2, 0.9);
 }
+
+
 
 #custom-spotify {
+  color: @color4;
 }
 
+#custom-spotify.playing {
+  color: @color5;
+}
+
+
+
 #tray {
+  padding-right: 6px;
+}
+
+#tray > .passive {
+  opacity: 0.4;
+}
+
+#tray > .needs-attention {
+  background: @color14;
+  color: @color4;
+  border-radius: 6px;
+}
+
+
+
+tooltip {
+  background: @background;
+  border-radius: 6px;
+  padding: 4px 8px;
+  border: 1px solid alpha(@color2, 0.9);
+}
+
+tooltip label {
+  color: @color4;
 }
