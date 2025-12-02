@@ -302,7 +302,7 @@
 (define-public wakatime-cli
   (package
     (name "wakatime-cli")
-    (version "1.115.5")
+    (version "1.131.0")
     (source
      (origin
        (method git-fetch)
@@ -311,7 +311,7 @@
              (commit (string-append "v" version))))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "05cy7rmwvmwbpb2i3vf9afd3m1ff4sf5n87v9z6gvzgkmm8cjdna"))))
+        (base32 "1iwa18vgx1gmrzn45z8q40i83sdxy2zdhgs3yy8gzjxxagb0ggj1"))))
     (build-system go-build-system)
     (native-inputs (list go-github-com-gandarez-go-olson-timezone-for-wakatime
                     go-github-com-gandarez-go-realpath-for-wakatime
