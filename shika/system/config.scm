@@ -10,6 +10,7 @@
              (nonguix utils)
              (shika lib channels)
              (shika lib substitutes)
+             (gnu services xorg)
              (guix gexp))
 
 (use-service-modules networking
@@ -93,10 +94,14 @@
                                       (service nvidia-service-type)
                                       (service pcscd-service-type)
                                       (service bluetooth-service-type)
-                                      ;; (service polkit-wheel-service)
                                       (service polkit-service-type)
+                                      (service screen-locker-service-type
+                                        (screen-locker-configuration
+                                        (name "swaylock")
+                                        (program (file-append (specification->package "swaylock-effects") "/bin/swaylock"))
+                                        (using-pam? #t)
+                                        (using-setuid? #f)))
 
-                                      ;; Install our NetworkManager polkit rule.
                                       (extra-special-file
                                        "/etc/polkit-1/rules.d/49-networkmanager.rules"
                                        (plain-file "49-networkmanager.rules"
