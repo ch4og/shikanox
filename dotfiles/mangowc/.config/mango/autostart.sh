@@ -1,6 +1,15 @@
 #!/usr/bin/env sh
 
-swww-daemon
-swww restore
+dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
+
+swaync &
+
+swww-daemon & swww restore &
+
+waybar &
+
+wl-clip-persist --clipboard regular --reconnect-tries 0 &
+
+wl-paste --watch cliphist store &
+
 mmsg -d focusmon,eDP-1
-sleep 0.3 && waybar

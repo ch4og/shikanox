@@ -42,7 +42,7 @@
       "return-type": "json"
     },
     "custom/swaync": {
-      "exec": "$HOME/.config/waybar/swaync.sh 2> /dev/null",
+      "exec": "$HOME/.config/waybar/scripts/swaync.sh 2> /dev/null",
       "format": "{icon}",
       "format-icons": {
         "dnd": "  ",
