@@ -1,10 +1,25 @@
-// Copyright © 2025 Nikita Mitasov <mitanick@ya.ru>
 [
   {
+    "layer": "top",
+    "height": 34,
+    "modules-left": [
+      "ext/workspaces"
+    ],
+    "modules-center": [
+      "custom/spotify"
+    ],
+    "modules-right": [
+      "custom/swaync",
+      "tray",
+      "pulseaudio",
+      "network",
+      "bluetooth",
+      "battery",
+      "sway/language",
+      "clock"
+    ],
     "battery": {
-      "bat": "BAT1",
       "format": "{icon}",
-      "format-full": "",
       "format-icons": [
         " ",
         " ",
@@ -17,6 +32,10 @@
         "warning": 30
       },
       "tooltip-format": "{capacity}% {timeTo}"
+    },
+    "bluetooth": {
+      "on-click": "dmenu-bluetooth",
+      "format": ""
     },
     "clock": {
       "format": "{:%H:%M:%S}",
@@ -55,37 +74,15 @@
       "return-type": "json",
       "tooltip": false
     },
-    "height": 30,
-    "sway/language": {
-      // "format": "{}",
-      // "format-en": "🦅",
-      // "format-ru": "💤"
-    },
     "ext/workspaces": {
         "format": "{icon}",
         "ignore-hidden": true,
         "on-click": "activate",
         "sort-by-id": true,
     },
-    "layer": "top",
     "memory": {
       "format": "{}% "
     },
-    "modules-center": [
-      "custom/spotify"
-    ],
-    "modules-left": [
-      "ext/workspaces"
-    ],
-    "modules-right": [
-      "custom/swaync",
-      "tray",
-      "pulseaudio",
-      "network",
-      "battery",
-      "sway/language",
-      "clock"
-    ],
     "network": {
       "format-disconnected": "⚠",
       "format-ethernet": "󰈀 ",
