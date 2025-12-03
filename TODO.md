@@ -12,3 +12,6 @@
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
 - [ ] Fix audio crackings in some wine games
+- [ ] Tela icons
+- [ ] Waybar new config
+- [ ] Take a look at [DreamMaoMao/mango-config](https://github.com/DreamMaoMao/mango-config)
