@@ -10,7 +10,9 @@
              (nonguix utils)
              (shika lib channels)
              (shika lib substitutes)
+             (shika lib layout)
              (gnu services xorg)
+             (shika packages kmscon)
              (guix gexp))
 
 (use-service-modules networking
@@ -34,12 +36,12 @@
                       (host-name "noko")
                       (timezone "Europe/Moscow")
                       (locale "en_US.utf8")
-                      (keyboard-layout (keyboard-layout "us" "colemak"))
+                      (keyboard-layout shika-layout)
 
                       (bootloader (bootloader-configuration
                                    (bootloader grub-efi-bootloader)
                                    (targets '("/boot/efi"))
-                                   (keyboard-layout keyboard-layout)))
+                                   (keyboard-layout shika-layout)))
 
                       (file-systems (append (list (file-system
                                                    (device (uuid "3f026519-10e9-4d92-8253-06558d5d8374"))
@@ -74,9 +76,9 @@
 
                                    %base-user-accounts))
 
-                      (packages (append (map specification->package
-                                             '("vim" "fish" "openssh" "git"))
-                                        %base-packages))
+                      (packages (map replace-mesa (append (map specification->package
+                                             '("vim" "fish" "openssh" "git" "kmscon"))
+                                        %base-packages)))
                       (services
                        (append (list (service network-manager-service-type
                                               (network-manager-configuration
@@ -122,6 +124,37 @@
                                               (openssh-configuration (openssh
                                                                       (specification->package "openssh-sans-x"))
                                                                      (port-number 2222)))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty1")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty2")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty3")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty4")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty5")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+                                     (service kmscon-service-type (kmscon-configuration
+                                                                   (virtual-terminal "tty6")
+                                                                   (hardware-acceleration? #t)
+                                                                   (keyboard-layout shika-layout)
+                                                                   (kmscon (replace-mesa kmscon))))
+
                                      (simple-service 'cron-jobs
                                                      mcron-service-type
                                                      (list #~(job "5 0 * * *"
@@ -165,6 +198,8 @@
                                                                                           (chmod dir #o700))))
                                                                              (one-shot? #t)))))
                                (modify-services %base-services
+                                                (delete mingetty-service-type)
+                                                (delete console-font-service-type)
                                                 (guix-service-type config =>
                                                                    (guix-configuration (inherit config)
                                                                                        (channels shika-chs)
