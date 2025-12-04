@@ -46,8 +46,7 @@
                                         "-L"
                                         repo-root
                                         "-u"
-                                        "--select="
-                                        "'module:(shika packages " name ")'")
+                                        (string-join `("--select='module:(shika packages " ,name ")'") ""))
                                   extra-args) " ")))
    (map
     (lambda (f) (substring f 0 (- (string-length f) 4)))
