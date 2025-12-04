@@ -77,8 +77,8 @@
                                    %base-user-accounts))
 
                       (packages (map replace-mesa (append (map specification->package
-                                             '("vim" "fish" "openssh" "git" "kmscon"))
-                                        %base-packages)))
+                                                               '("vim" "fish" "openssh" "git" "kmscon"))
+                                                          %base-packages)))
                       (services
                        (append (list (service network-manager-service-type
                                               (network-manager-configuration
