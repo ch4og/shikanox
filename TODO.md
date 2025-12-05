@@ -3,7 +3,6 @@
 
 - [ ] Set GTK theme, icons, cursor and font
 - [ ] Hellwal
-- [ ] Deal with portals (xdg-desktop-portal-wlr)
 - [ ] Display manager
 - [ ] swayidle
 - [ ] swayosd

@@ -91,7 +91,7 @@
                     "wtype"
                     "xdg-desktop-portal"
                     "xdg-desktop-portal-gtk"
-                    "xdg-desktop-portal-wlr"
+                    "xdg-desktop-portal-wlr@0.8.1"
                     "xdg-utils"
                     "zapret"
                     "zip"
