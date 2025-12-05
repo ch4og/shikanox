@@ -1,7 +1,7 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika packages zapret)
+(define-module (koshi packages zapret)
   #:use-module (guix packages)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages commencement)

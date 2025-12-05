@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 # SPDX-License-Identifier: CC0-1.0
 
-#+TITLE: Shikanox - Personal GNU/Linux [Early WIP]
+#+TITLE: Shikanox - Personal GNU/Linux [WIP]
 #+OPTIONS: toc:nil
 
 #+HTML: <a href="https://api.reuse.software/info/codeberg.org/ch4og/shikanox" rel="nofollow noopener"><img src="https://img.shields.io/reuse/compliance/codeberg.org%2Fch4og%2Fshikanox?logo=open-source-initiative&logoColor=white&label=REUSE&labelColor=24292e"></a>
@@ -16,11 +16,10 @@ A complete personal config "distro" built on GNU Guix System, GNU Guix Home and 
 
 * This repo defines:
 
-- *shika/system* :: GNU Guix System configuration
-- *shika/home* :: GNU Guix Home configuration  
-- *shika/packages* :: GNU Guix Packages channel
-- *nix* :: Nix Home Manager configuration
-- *dotfiles* :: Dotfiles
+- *[[./guix/shika][guix/shika]]* :: GNU Guix System and Home configurations
+- *[[./guix/koshi][guix/koshi]]* :: GNU Guix Channel with packages
+- *[[./nix/hm][nix/hm]]* :: Nix Home Manager configuration
+- *[[./dotfiles][dotfiles]]* :: Dotfiles
 
 * Add channel to your system
 
@@ -58,21 +57,22 @@ automatically linked into =~= via the =home-dotfiles-service-type=.
 
 #+begin_src sh
   cd dotfiles
-  stow mangowc zsh other-package-name -t ~
+  stow fish mangowc other-package-name -t ~
 #+end_src
 
 * Reconfigure script
 
-This repository provides a helper script =shika=.
+This repository provides helper scripts =shika=, =koshi=, =hm=.
 
-Instead of running long =guix time-machine= invocations manually, you can simply do:
+Instead of running long guix and nix invocations manually, you can for example do:
 
 #+BEGIN_SRC sh
-shika system
-shika home
+  shika system
+  koshi format
+  hm update
 #+END_SRC
 
-(Loaded to =$PATH= from =./scripts/shika= with direnv)
+(Loaded to =$PATH= from =./bin= with direnv)
 
 * Acknowledgments
 

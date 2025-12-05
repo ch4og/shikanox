@@ -1,9 +1,9 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika packages lazygit)
+(define-module (koshi packages lazygit)
   #:use-module (guix packages)
-  #:use-module (shika build-system nix-go)
+  #:use-module (koshi build-system nix-go)
   #:use-module (guix git-download)
   #:use-module (gnu packages golang)
   #:use-module (gnu packages version-control)
@@ -28,7 +28,7 @@
     `(#:vendor-hash "0h21kha3ry2rhqwv63x7fha739b1a4snq89dn7lrlrs7fqnanwq0"
       #:go ,go-1.25
       #:ldflags `("-X" ,(string-append "main.version=" ,version)
-                  "-X" "'main.buildSource=ch4og/shikanox Guix channel'")))
+                  "-X" "'main.buildSource=ch4og/koshinox Guix channel'")))
    (propagated-inputs (list git-minimal))
    (home-page "https://github.com/jesseduffield/lazygit")
    (synopsis "Simple terminal UI for git commands")

@@ -1,6 +1,5 @@
 # SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
-
 {
   description = "Nix home-manager";
 
@@ -49,5 +48,6 @@
     defaultPackage.${system} = pkgs.writeShellScriptBin "home-manager-switch" ''
       exec ${home-manager.packages.${system}.home-manager}/bin/home-manager "$@"
     '';
+    formatter.${system} = pkgs.alejandra;
   };
 }

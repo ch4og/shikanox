@@ -2,7 +2,7 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika build nix-go-build-system)
+(define-module (koshi build nix-go-build-system)
   #:use-module (guix build utils)
   #:use-module ((guix build gnu-build-system) #:prefix gnu:)
   #:use-module (srfi srfi-1)

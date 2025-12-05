@@ -4,14 +4,13 @@
 - [ ] Set GTK theme, icons, cursor and font
 - [ ] Hellwal
 - [ ] Deal with portals (xdg-desktop-portal-wlr)
-- [ ] wlr-dpms
 - [ ] Display manager
 - [ ] swayidle
 - [ ] swayosd
 - [ ] satty
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
-- [ ] Fix audio crackings in some wine games
 - [ ] Tela icons
 - [ ] Waybar new config
 - [ ] Take a look at [DreamMaoMao/mango-config](https://github.com/DreamMaoMao/mango-config)
+- [ ] Add shika update

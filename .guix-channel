@@ -6,6 +6,7 @@
  (name 'shikanox)
  (url "https://codeberg.org/ch4og/shikanox.git")
  (branch "main")
+ (directory "guix")
  (dependencies
   (channel
    (name nonguix)

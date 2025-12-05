@@ -12,7 +12,7 @@
              (shika lib substitutes)
              (shika lib layout)
              (gnu services xorg)
-             (shika packages kmscon)
+             (koshi packages kmscon)
              (guix gexp))
 
 (use-service-modules networking

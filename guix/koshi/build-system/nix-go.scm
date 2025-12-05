@@ -2,7 +2,7 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika build-system nix-go)
+(define-module (koshi build-system nix-go)
   #:use-module (guix build-system)
   #:use-module (guix build utils)
   #:use-module (guix base32)
@@ -27,7 +27,7 @@
   `((guix build utils)
     ;(guix gexp)
     ;(guix build-system)
-    (shika build nix-go-build-system)
+    (koshi build nix-go-build-system)
     ,@%default-gnu-imported-modules))
 
 (define (default-go)
@@ -184,7 +184,7 @@
                        (sub-packages '("."))
                        (guile #f)
                        (imported-modules %nix-go-build-system-modules)
-                       (modules '((shika build nix-go-build-system)
+                       (modules '((koshi build nix-go-build-system)
                                   (guix build utils)))
 
                        (substitutable? #t))

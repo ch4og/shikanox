@@ -1,7 +1,7 @@
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
-(define-module (shika packages kmscon)
+(define-module (koshi packages kmscon)
   #:use-module (guix git-download)
   #:use-module (guix packages)
   #:use-module (guix build-system meson)

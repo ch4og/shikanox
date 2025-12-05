@@ -17,7 +17,8 @@
              (nonguix utils)
              (gnu installer utils)
              (nongnu packages nvidia)
-             (gnu home services shepherd))
+             (gnu home services shepherd)
+             (koshi lib config-root))
 
 (define (home-dir)
   (getenv "HOME"))
@@ -45,8 +46,8 @@
 					                                             ("FONTCONFIG_PATH" . ,(string-append (home-dir) "/.guix-home/profile/etc/fonts/"))))
 
                                      (service home-dotfiles-service-type
-                                              (home-dotfiles-configuration (directories '
-                                                                            ("../../dotfiles"))
+                                              (home-dotfiles-configuration (directories `
+                                                                            (,(string-append config-root "/dotfiles")))
                                                                            (layout 'stow)
                                                                            (packages '
                                                                             ("fastfetch"
@@ -99,11 +100,11 @@
                                                      home-activation-service-type
                                                      #~(begin
                                                          (use-modules (guix gexp)
-                                                                      (shika lib config-root))
+                                                                      (koshi lib config-root))
                                                          (system (string-append "nix run "
-                                                                                (dirname (dirname config-root))
-                                                                                "/nix"
+                                                                                config-root
+                                                                                "/nix/hm"
                                                                                 " -- switch --flake "
-                                                                                (dirname (dirname config-root))
-                                                                                "/nix")))))
+                                                                                config-root
+                                                                                "/nix/hm")))))
                                %base-home-services))))
