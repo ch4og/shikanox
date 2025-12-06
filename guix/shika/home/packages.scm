@@ -52,6 +52,7 @@
                     "krita"
                     "lazygit"
                     "libreoffice"
+                    "mangohud"
                     "mangowc"
                     "mpv-nvidia"
                     "ncurses"

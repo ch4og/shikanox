@@ -58,6 +58,7 @@
                                                                              "jujutsu"
                                                                              "git"
                                                                              "protonup"
+                                                                             "mangohud"
                                                                              "tmux"
                                                                              "fish"
                                                                              "rofi"))))
