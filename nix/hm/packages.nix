@@ -7,6 +7,7 @@
     amnezia-vpn
     ayugram-desktop
     aagl.honkers-railway-launcher
+    vscode
     wl-clip-persist
   ];
 }
