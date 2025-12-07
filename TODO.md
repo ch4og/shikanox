@@ -1,7 +1,6 @@
 <!--SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>-->
 <!--SPDX-License-Identifier: CC0-1.0-->
 
-- [ ] Set GTK theme, icons, cursor and font
 - [ ] Hellwal
 - [ ] Display manager
 - [ ] swayidle
@@ -9,6 +8,5 @@
 - [ ] satty
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
-- [ ] Tela icons
 - [ ] Waybar new config
 - [ ] Add shika update

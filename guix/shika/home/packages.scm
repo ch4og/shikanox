@@ -15,7 +15,8 @@
 (append (append (specifications->packages '("bind:utils")) `(,quickshell-git))
         (map transform
              (map specification->package
-                  '("bat"
+                  '("arashi-icon-theme"
+                    "bat"
                     "blueman"
                     "bluez"
                     "bibata-cursor-theme"
