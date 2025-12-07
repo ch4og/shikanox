@@ -52,6 +52,7 @@
                                                                            (packages '
                                                                             ("fastfetch"
                                                                              "dxvk"
+                                                                             "gtk"
                                                                              "ghostty"
                                                                              "mangowc"
                                                                              "emacs"
