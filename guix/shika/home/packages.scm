@@ -4,16 +4,12 @@
 (define-module (shika home packages))
 (use-modules (guix utils)
              (gnu packages)
-             (gnu packages wm)
              (gnu packages dns)
              (guix transformations)
-             (nongnu packages nvidia)
-             (quickshell))
-(define transform
-  (options->transformation '((with-graft . "mesa=nvda"))))
+             (nongnu packages nvidia))
 
-(append (append (specifications->packages '("bind:utils")) `(,quickshell-git))
-        (map transform
+(append (append (specifications->packages '("bind:utils")))
+        (map replace-mesa
              (map specification->package
                   '("arashi-icon-theme"
                     "bat"
@@ -62,6 +58,7 @@
                     "networkmanager-dmenu"
                     "nftables"
                     "obs-nvidia"
+                    "obs-wlrobs"
                     "pavucontrol"
                     "pcmanfm"
                     "pinentry"
@@ -69,6 +66,7 @@
                     "playerctl"
                     "protonup"
                     "qbittorrent-enhanced"
+                    "quickshell@git"
                     "remmina"
                     "reuse"
                     "ripgrep"
@@ -90,6 +88,7 @@
                     "waybar-experimental"
                     "wireplumber"
                     "wl-clipboard"
+                    "wl-mirror"
                     "wlr-dpms"
                     "wtype"
                     "xdg-desktop-portal"
