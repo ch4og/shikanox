@@ -9,27 +9,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
-    aagl,
     ...
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [
-        (final: prev: {
-          aagl = aagl.packages.${system};
-        })
-      ];
     };
   in {
     homeConfigurations."ch" = home-manager.lib.homeManagerConfiguration {
