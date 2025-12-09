@@ -17,7 +17,7 @@ A complete personal config "distro" built on GNU Guix System, GNU Guix Home and 
 * This repo defines:
 
 - *[[./guix/shika][guix/shika]]* :: GNU Guix System and Home configurations
-- *[[./guix/koshi][guix/koshi]]* :: GNU Guix Channel with packages
+- *[[./guix/koshi][guix/koshi]]* :: GNU Guix Channel with packages and services
 - *[[./nix/hm][nix/hm]]* :: Nix Home Manager configuration
 - *[[./dotfiles][dotfiles]]* :: Dotfiles
 
