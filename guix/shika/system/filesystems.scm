@@ -25,3 +25,10 @@
                  (mount-point "/boot/efi")
                  (type "vfat")))
           %base-file-systems))
+
+(define-public %shika-swap-devices
+  (list
+   (swap-space
+    (target "/swap/swapfile")
+    (dependencies (filter (file-system-mount-point-predicate "/")
+                          %shika-file-systems)))))

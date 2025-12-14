@@ -30,6 +30,7 @@
      (keyboard-layout %shika-layout)
      (bootloader %shika-bootloader-configuration)
      (file-systems %shika-file-systems)
+     (swap-devices %shika-swap-devices)
      (users (make-shika-users username))
      (packages %shika-system-packages)
      (services %shika-system-services)
