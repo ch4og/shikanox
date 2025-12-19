@@ -12,3 +12,5 @@
 - [ ] Add shika update
 - [ ] ext sched
 - [ ] btrfs backups and scrub
+- [ ] noatime for guix and nix stores
+- [ ] force compress stores and root

@@ -11,7 +11,7 @@
 (define-public %shika-bootloader-configuration
   (bootloader-configuration
    (bootloader grub-efi-bootloader)
-   (targets '("/boot/efi"))
+   (targets '("/efi"))
    (keyboard-layout %shika-layout)
    (theme (grub-theme
            (inherit (grub-theme))
