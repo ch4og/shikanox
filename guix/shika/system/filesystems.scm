@@ -21,6 +21,7 @@
                  (type "btrfs")
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
+                 (flags '(no-atime))
                  (options "compress=zstd,subvol=root"))
                 (file-system
                  (device "/dev/mapper/root")
@@ -28,6 +29,7 @@
                  (type "btrfs")
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
+                 (flags '(no-atime))
                  (options "compress=zstd,subvol=gnu-store"))
                 (file-system
                  (device "/dev/mapper/root")
@@ -35,6 +37,7 @@
                  (type "btrfs")
                  (needed-for-boot? #t)
                  (dependencies %shika-mapped-devices)
+                 (flags '(no-atime))
                  (options "compress=zstd,subvol=nix"))
                 (file-system
                  (device "/dev/mapper/root")
@@ -62,6 +65,7 @@
                  (mount-point "/swap")
                  (type "btrfs")
                  (needed-for-boot? #t)
+                 (flags '(no-atime))
                  (dependencies %shika-mapped-devices)
                  (options "subvol=swap"))
                 (file-system
