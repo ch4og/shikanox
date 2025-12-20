@@ -3,7 +3,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     spotify
-    steam-run
     amnezia-vpn
     ayugram-desktop
     vscode
