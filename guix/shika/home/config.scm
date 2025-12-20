@@ -55,6 +55,7 @@
                                                                              "gtk"
                                                                              "ghostty"
                                                                              "mangowc"
+                                                                             "swappy"
                                                                              "emacs"
                                                                              "jujutsu"
                                                                              "git"
