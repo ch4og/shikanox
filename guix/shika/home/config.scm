@@ -11,6 +11,7 @@
              (gnu home services desktop)
              (gnu home services dotfiles)
              (gnu home services gnupg)
+             (gnu home services xdg)
              (guix gexp)
              (guix packages)
              (guix download)
@@ -43,6 +44,7 @@
                                                      home-environment-variables-service-type
                                                      `(("NIXPKGS_ALLOW_UNFREE" . "1")
 					                                             ("EDITOR" . "emacsclient")
+                                                       ("GUIX_SANDBOX_EXTRA_SHARES" . "/games")
 					                                             ("FONTCONFIG_PATH" . ,(string-append (home-dir) "/.guix-home/profile/etc/fonts/"))))
 
                                      (service home-dotfiles-service-type
@@ -80,6 +82,22 @@
                                                                             (specification->package
                                                                              "wakatime-cli")
                                                                             "/bin/wakatime-cli"))))
+                                     (service home-xdg-user-directories-service-type
+                                              (home-xdg-user-directories-configuration
+                                               (desktop     "$HOME")
+                                               (documents   "$HOME/documents")
+                                               (download    "$HOME/downloads")
+                                               (music       "$HOME")
+                                               (pictures    "$HOME/pictures")
+                                               (publicshare "$HOME")
+                                               (templates   "$HOME")
+                                               (videos      "$HOME/videos")))
+                                     (simple-service
+                                      'home-xdg-utils
+                                      home-profile-service-type
+                                      (list
+                                       (specification->package
+                                        "xdg-utils")))
                                      (simple-service 'pull-gpg
                                                      home-activation-service-type
                                                      #~(begin
