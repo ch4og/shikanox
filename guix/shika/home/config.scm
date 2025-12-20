@@ -20,6 +20,7 @@
              (nongnu packages nvidia)
              (gnu home services shepherd)
              (koshi utils config-root)
+             (koshi services home-reload-waybar)
              (shika home packages))
 
 (define (home-dir)
@@ -111,12 +112,7 @@
                                                          (system
                                                           "pgrep mango && mmsg -d reload_config")))
 
-                                     (simple-service 'reload-waybar
-                                                     home-activation-service-type
-                                                     #~(begin
-                                                         (use-modules (guix gexp))
-                                                         (system
-                                                          "pgrep waybar && killall -SIGUSR2 waybar")))
+                                     (service home-reload-waybar-service-type)
 
                                      (simple-service 'home-manager
                                                      home-activation-service-type
