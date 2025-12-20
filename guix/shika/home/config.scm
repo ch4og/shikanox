@@ -53,6 +53,7 @@
                                                                            (layout 'stow)
                                                                            (packages '
                                                                             ("fastfetch"
+                                                                             "btop"
                                                                              "dxvk"
                                                                              "gtk"
                                                                              "ghostty"
