@@ -56,6 +56,7 @@
                                                                              "ghostty"
                                                                              "mangowc"
                                                                              "swappy"
+                                                                             "pipewire"
                                                                              "emacs"
                                                                              "jujutsu"
                                                                              "git"
