@@ -1,25 +1,19 @@
-
-@define-color background #1b181d;
-@define-color foreground #000000;
-@define-color cursor     #000000;
-@define-color border     #000000;
-
-@define-color color0  #1b181d;
-@define-color color1  #382238;
-@define-color color2  #36203b;
-@define-color color3  #363a48;
-@define-color color4  #b6a9a8;
-@define-color color5  #867990;
-@define-color color6  #868085;
-@define-color color7  #755961;
-@define-color color8  #19141b;
-@define-color color9  #000000;
+@define-color color0 #cbc0b7;
+@define-color color1 #504030;
+@define-color color2 #605040;
+@define-color color3 #202020;
+@define-color color4 #706050;
+@define-color color5 #606050;
+@define-color color6 #605050;
+@define-color color7 #707060;
+@define-color color8 #fffeff;
+@define-color color9 #fffeff;
 @define-color color10 #000004;
 @define-color color11 #000000;
 @define-color color12 #040000;
 @define-color color13 #00105a;
 @define-color color14 #1f0000;
-
+@define-color color15 #000000;
 
 
 
@@ -31,15 +25,17 @@
   min-height: 0;
 }
 
+
+
 window#waybar {
   background: transparent;
-  
-  color: @color4;
+  color: @color8;
 }
 
 
+
 #waybar > box {
-  margin: 6px 6px 0px 6px; 
+  margin: 6px 6px 0px 6px;
 }
 
 
@@ -51,16 +47,18 @@ window#waybar {
 }
 
 
+
 .modules-left > widget > *,
 .modules-center > widget > *,
 .modules-right > widget > * {
-  background: alpha(@background, 0.95);
+  background: alpha(@color2, 0.85);
   border-radius: 8px;
   padding: 3px 8px;
   margin: 0 4px;
-  border: 1px solid alpha(@color2, 0.9);
-  color: @color4; 
+  border: 1px solid alpha(@color3, 0.6);
+  color: @color8;
 }
+
 
 
 .modules-center > widget > * {
@@ -76,7 +74,7 @@ window#waybar {
 
 #workspaces button {
   background: transparent;
-  color: @color4;
+  color: @color8;
   padding: 3px 9px;
   margin: 0 2px;
   border-radius: 6px;
@@ -84,49 +82,39 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  background: alpha(@color1, 0.25);
-  color: @color4;
+  background: alpha(@color4, 0.35);
 }
 
-
 #workspaces button.active {
-  background: @color1;
-  color: @color4;
-  border-color: alpha(@color4, 0.7);
-  padding-top: 3px;
-  padding-bottom: 3px;
+  background: @color4;
+  color: @color8;
+  border-color: alpha(@color8, 0.5);
   font-weight: 600;
 }
 
-
 #workspaces button.urgent {
   background: @color14;
-  color: @color4;
-  border-color: @color4;
-}
-
-#workspaces button label {
-  padding: 0;
+  color: @color8;
 }
 
 
 
 #window {
   font-weight: 600;
-  color: @color4;
+  color: @color8;
 }
 
 #window.empty {
-  color: alpha(@color4, 0.45);
+  color: alpha(@color8, 0.45);
 }
 
 
 
 #mode {
-  background: @color2;
-  color: @color4;
+  background: @color13;
+  color: @color8;
   border-radius: 8px;
-  border: 1px solid @color1;
+  border: 1px solid alpha(@color8, 0.4);
   padding: 3px 10px;
 }
 
@@ -147,29 +135,28 @@ window#waybar {
 
 
 #clock {
-  color: @color4;
+  color: @color8;
   font-weight: 500;
 }
 
 
 
 #battery {
-  color: @color4;
+  color: @color8;
 }
 
 #battery.charging {
-  
   color: @color5;
 }
 
 @keyframes battery-warn {
   0% {
-    background-color: alpha(@color14, 0.2);
-    color: @color4;
+    background-color: alpha(@color1, 0.35);
+    color: @color8;
   }
   100% {
-    background-color: alpha(@color14, 0.4);
-    color: @color4;
+    background-color: alpha(@color1, 0.55);
+    color: @color8;
   }
 }
 
@@ -182,11 +169,11 @@ window#waybar {
 
 #cpu,
 #memory {
-  color: @color4;
+  color: @color8;
 }
 
 #cpu {
-  border-right: 1px solid alpha(@color2, 0.8);
+  border-right: 1px solid alpha(@color3, 0.6);
   padding-right: 7px;
 }
 
@@ -197,30 +184,30 @@ window#waybar {
 
 
 #network {
-  color: @color4;
+  color: @color8;
 }
 
 #network.disconnected {
   background: @color14;
-  color: @color4;
+  color: @color8;
   border-radius: 8px;
 }
 
 
 
 #pulseaudio {
-  color: @color4;
+  color: @color8;
 }
 
 #pulseaudio.muted {
-  color: alpha(@color4, 0.5);
-  background: alpha(@color2, 0.9);
+  color: alpha(@color8, 0.5);
+  background: alpha(@color3, 0.6);
 }
 
 
 
 #custom-spotify {
-  color: @color4;
+  color: @color8;
 }
 
 #custom-spotify.playing {
@@ -238,20 +225,36 @@ window#waybar {
 }
 
 #tray > .needs-attention {
-  background: @color14;
-  color: @color4;
+  background: @color1;
+  color: @color8;
   border-radius: 6px;
 }
 
 
 
 tooltip {
-  background: @background;
+  background: alpha(@color3, 0.95);
   border-radius: 6px;
   padding: 4px 8px;
-  border: 1px solid alpha(@color2, 0.9);
+  border: 1px solid alpha(@color2, 0.8);
 }
 
 tooltip label {
-  color: @color4;
+  color: @color8;
+}
+
+#battery,
+#network,
+#pulseaudio,
+#custom-swaync,
+#tray {
+  min-width: 22px;
+}
+
+#battery,
+#network,
+#pulseaudio,
+#custom-swaync {
+  padding-left: 8px;
+  padding-right: 4px;
 }
