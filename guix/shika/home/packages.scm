@@ -36,6 +36,7 @@
      "font-google-noto"
      "font-google-noto-emoji"
      "font-google-noto-sans-cjk"
+     "font-microsoft-web-core-fonts"
      "fzf"
      "ghostty"
      "gimp"
