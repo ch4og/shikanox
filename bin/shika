@@ -37,17 +37,22 @@
 (define (run-format)
   (system "find guix/shika -type f -name \"*.scm\" -exec emacs --batch {} --eval '(progn (indent-region (point-min) (point-max)) (save-buffer))' \\; ;"))
 
+(define (run-update)
+  (system "sh bin/update-channels"))
+
 (define (usage command)
   (display (string-append "Usage: " command " COMMAND [args...]\n\n"))
   (display "Commands:\n")
   (display "  system   [args...]  - reconfigure system\n")
   (display "  home     [args...]  - reconfigure home\n")
+  (display "  update              - update channels\n")
   (display "  format              - format code with Emacs\n"))
 
 (define (selection cmd)
   (match (cdr cmd)
     (("system" . rest) (run-guix "system" rest))
     (("home" . rest) (run-guix "home" rest))
+    (("update") (run-update))
     (("format") (run-format))
     (_ (usage (car cmd)) (exit 1))))
 

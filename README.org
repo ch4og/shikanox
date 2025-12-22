@@ -93,5 +93,6 @@ Big thanks to people and projects that inspired me:
 - [[https://github.com/hiecaq/guix-config][hiecaq/guix-config]]
 - [[https://github.com/DreamMaoMao/mango-config][DreamMaoMao/mango-config]]
 - [[https://sr.ht/~abcdw/rde/][~abcdw/rde]]
+- [[https://codeberg.org/hako/Testament][hako/Testament]]
 
 All files that include code by others have a license note about it in their heading, original license is kept.
