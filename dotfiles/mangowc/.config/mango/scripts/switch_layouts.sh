@@ -2,6 +2,7 @@
 
 TARGET_APPS=(
     "starrail.exe"
+    "steam_app_730"
 )
 
 declare -A APPID_BY_MONITOR

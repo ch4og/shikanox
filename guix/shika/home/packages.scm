@@ -31,6 +31,7 @@
      "file-roller"
      "filezilla"
      "firefox"
+     "flatpak"
      "font-awesome-nonfree"
      "fontforge"
      "font-google-noto"
