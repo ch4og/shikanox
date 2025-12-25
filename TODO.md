@@ -18,3 +18,4 @@
 - [ ] consider using justfile instead of scripts
 - [ ] try out sops-guix
 - [ ] throne, superfile
+- [ ] lavd sched

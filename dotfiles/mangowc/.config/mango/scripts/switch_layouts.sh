@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 TARGET_APPS=(
-    "starrail.exe"
-    "steam_app_730"
+    "\.exe$"
+    "^steam_app_"
 )
 
 declare -A APPID_BY_MONITOR
@@ -10,10 +10,11 @@ CURRENT_LAYOUT="default"
 LOCKFILE="/tmp/layout_switch.lock"
 
 is_target_app() {
+    local appid="$1"
     local target
 
     for target in "${TARGET_APPS[@]}"; do
-        if [ "$1" = "$target" ]; then
+        if [[ "$appid" =~ "$target" ]]; then
             return 0
         fi
     done
@@ -22,7 +23,10 @@ is_target_app() {
 }
 
 handle_focus_change() {
-    if is_target_app "${APPID_BY_MONITOR[$1]}"; then
+    local monitor="$1"
+    local appid="${APPID_BY_MONITOR[$monitor]}"
+
+    if is_target_app "$appid"; then
         if [ "$CURRENT_LAYOUT" != "game" ]; then
             mmsg -d "setoption,xkb_rules_variant,"
             CURRENT_LAYOUT="game"
