@@ -9,7 +9,6 @@
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
 - [ ] Waybar new config
-- [ ] ext sched
 - [ ] btrfs backups and scrub
 - [ ] noatime for guix and nix stores
 - [ ] force compress stores and root
@@ -18,4 +17,4 @@
 - [ ] consider using justfile instead of scripts
 - [ ] try out sops-guix
 - [ ] throne, superfile
-- [ ] lavd sched
+- [ ] lavd sched (maybe ext)
