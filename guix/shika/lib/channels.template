@@ -1,3 +1,4 @@
+;; -*- mode: scheme -*-
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -37,6 +38,16 @@
           "1055d880e124d69a2aef85cac98a813d442a55fa"
           (openpgp-fingerprint
            "7C9E 7EBA 828C 58DF DACE  5BED 4DCC 7AB7 FC75 319B"))))
+
+       (channel
+        (name 'rosenthal)
+        (url "https://codeberg.org/hako/rosenthal.git")
+        (branch "trunk")
+        (introduction
+         (make-channel-introduction
+          "7677db76330121a901604dfbad19077893865f35"
+          (openpgp-fingerprint
+           "13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
        %default-channels))
 ;;; %shika-chs end
 

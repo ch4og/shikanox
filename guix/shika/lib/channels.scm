@@ -1,3 +1,4 @@
+;; -*- mode: scheme -*-
 ;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -12,7 +13,7 @@
          (url "https://github.com/DreamMaoMao/mangowc")
          (branch "main")
          (commit
-          "471c71f65c3c15ebe633edf4757361649757f990"))
+          "14f15ec997694a19326c0d132148d35c934bf665"))
         (channel
          (name 'quickshell)
          (url "https://github.com/ch4og/quickshell.git")
@@ -31,11 +32,22 @@
            (openpgp-fingerprint
             "7C9E 7EBA 828C 58DF DACE  5BED 4DCC 7AB7 FC75 319B"))))
         (channel
+         (name 'rosenthal)
+         (url "https://codeberg.org/hako/rosenthal.git")
+         (branch "trunk")
+         (commit
+          "f15c27b931bb07cf76d6f8774730860263234676")
+         (introduction
+          (make-channel-introduction
+           "7677db76330121a901604dfbad19077893865f35"
+           (openpgp-fingerprint
+            "13E7 6CD6 E649 C28C 3385  4DF5 5E5A A665 6149 17F7"))))
+        (channel
          (name 'guix)
          (url "https://git.guix.gnu.org/guix.git")
          (branch "master")
          (commit
-          "a2df6c460f9777879a78a510fa5c3cc08ed0b4c1")
+          "aff9ce37616997647e7124edb0b3636ef98be68b")
          (introduction
           (make-channel-introduction
            "9edb3f66fd807b096b48283debdcddccfea34bad"

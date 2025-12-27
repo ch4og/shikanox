@@ -9,7 +9,9 @@
     "https://bordeaux.guix.gnu.org"
     "https://nonguix-proxy.ditigal.xyz"
     "https://substitutes.nonguix.org"
-    "https://guix.bordeaux.inria.fr"))
+    "https://guix.bordeaux.inria.fr"
+    "https://cache-fi.guix.moe"
+    "https://cache-cdn.guix.moe"))
 
 (define-public %shika-subs-urls
   (string-append "--substitute-urls=\""
