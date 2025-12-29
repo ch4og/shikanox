@@ -13,8 +13,6 @@
 
 (define-public (make-shika-os username hostname)
   (operating-system
-   (kernel %shika-kernel)
-   (initrd %shika-initrd)
    (kernel-arguments %shika-kernel-arguments)
    (host-name hostname)
    (timezone "Etc/UTC")

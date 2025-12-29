@@ -4,12 +4,14 @@
 (define-module (shika system config)
   #:use-module (shika system os)
   #:use-module (nonguix utils)
-  #:use-module (nongnu packages nvidia))
+  #:use-module (nonguix transformations))
 
 (define-public %shika-os
   (make-shika-os "ch" "noko"))
 
 (define-public %shika-os-nvidia
-  (with-transformation replace-mesa %shika-os))
+  ((compose (nonguix-transformation-nvidia)
+            (nonguix-transformation-linux))
+   %shika-os))
 
 %shika-os-nvidia

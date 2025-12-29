@@ -9,12 +9,14 @@
 - [ ] wlogout maybe
 - [ ] Gamemode try setting platform-profile
 - [ ] Waybar new config
-- [ ] btrfs backups and scrub
-- [ ] noatime for guix and nix stores
-- [ ] force compress stores and root
+- [ ] btrfs backups
 - [ ] locate-service-type
 - [ ] nonguix PR GUIX_SANDBOX_EXTRA_ENVS
-- [ ] consider using justfile instead of scripts
 - [ ] try out sops-guix
 - [ ] throne, superfile
 - [ ] lavd sched (maybe ext)
+- [ ] move waybar config to separate config package
+- [ ] pam u2f
+- [ ] switch to librewolf
+- [ ] imv
+- [ ] literate programming?

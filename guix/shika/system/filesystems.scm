@@ -22,7 +22,8 @@
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
                  (flags '(no-atime))
-                 (options "compress=zstd,subvol=root"))
+                 (options "compress-force=zstd,subvol=root"))
+
                 (file-system
                  (device "/dev/mapper/root")
                  (mount-point "/gnu/store")
@@ -30,7 +31,8 @@
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
                  (flags '(no-atime))
-                 (options "compress=zstd,subvol=gnu-store"))
+                 (options "compress-force=zstd,subvol=gnu-store"))
+
                 (file-system
                  (device "/dev/mapper/root")
                  (mount-point "/nix")
@@ -38,14 +40,16 @@
                  (needed-for-boot? #t)
                  (dependencies %shika-mapped-devices)
                  (flags '(no-atime))
-                 (options "compress=zstd,subvol=nix"))
+                 (options "compress-force=zstd,subvol=nix"))
+
                 (file-system
                  (device "/dev/mapper/root")
                  (mount-point "/var/log")
                  (type "btrfs")
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
-                 (options "compress=zstd,subvol=log"))
+                 (options "compress=no,subvol=log"))
+
                 (file-system
                  (device "/dev/mapper/home")
                  (mount-point "/home")
@@ -53,6 +57,7 @@
                  (dependencies %shika-mapped-devices)
                  (needed-for-boot? #t)
                  (options "compress=zstd,subvol=home"))
+
                 (file-system
                  (device "/dev/mapper/home")
                  (mount-point "/games")
@@ -60,6 +65,7 @@
                  (needed-for-boot? #t)
                  (dependencies %shika-mapped-devices)
                  (options "compress=zstd,subvol=games"))
+
                 (file-system
                  (device "/dev/mapper/home")
                  (mount-point "/swap")
@@ -67,7 +73,8 @@
                  (needed-for-boot? #t)
                  (flags '(no-atime))
                  (dependencies %shika-mapped-devices)
-                 (options "subvol=swap"))
+                 (options "compress=no,subvol=swap"))
+
                 (file-system
                  (device (uuid "350C-92A0" 'fat))
                  (mount-point "/efi")
