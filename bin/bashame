@@ -1,6 +1,6 @@
 #!/usr/bin/env -S guix shell guile -- guile --no-auto-compile
 ;; -*- mode: scheme -*-
-;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
+;; SPDX-FileCopyrightText: 2025-2026 Nikita Mitasov <me@ch4og.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 !#
 
@@ -8,7 +8,7 @@
   (string-append (dirname (dirname (canonicalize-path (current-filename)))) "/nix"))
 
 (define repo-nix-hm
-  (string-append repo-nix-root "/hm"))
+  (string-append repo-nix-root "/bashame"))
 
 (use-modules (ice-9 match)
              (ice-9 ftw))

@@ -114,17 +114,5 @@
                                                          (system
                                                           "pgrep mango && mmsg -d reload_config")))
 
-                                     (service home-reload-waybar-service-type)
-
-                                     (simple-service 'home-manager
-                                                     home-activation-service-type
-                                                     #~(begin
-                                                         (use-modules (guix gexp)
-                                                                      (koshi utils config-root))
-                                                         (system (string-append "nix run "
-                                                                                config-root
-                                                                                "/nix/hm"
-                                                                                " -- switch --flake "
-                                                                                config-root
-                                                                                "/nix/hm")))))
+                                     (service home-reload-waybar-service-type))
                                %base-home-services))))

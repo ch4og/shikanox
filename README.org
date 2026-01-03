@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
+# SPDX-FileCopyrightText: 2025-2026 Nikita Mitasov <me@ch4og.com>
 # SPDX-License-Identifier: CC0-1.0
 
 #+TITLE: Shikanox - Personal GNU/Linux [WIP]
@@ -18,7 +18,7 @@ A complete personal config "distro" built on GNU Guix System, GNU Guix Home and 
 
 - *[[./guix/shika][guix/shika]]* :: GNU Guix System and Home configurations
 - *[[./guix/koshi][guix/koshi]]* :: GNU Guix Channel with packages and services
-- *[[./nix/hm][nix/hm]]* :: Nix Home Manager configuration
+- *[[./nix/bashame][nix/bashame]]* :: Nix Home Manager configuration
 - *[[./dotfiles][dotfiles]]* :: Dotfiles
 
 * Add channel to your system
@@ -62,14 +62,14 @@ automatically linked into =~= via the =home-dotfiles-service-type=.
 
 * Reconfigure script
 
-This repository provides helper scripts =shika=, =koshi=, =hm=.
+This repository provides helper scripts =shika=, =koshi=, =bashame=.
 
 Instead of running long guix and nix invocations manually, you can for example do:
 
 #+BEGIN_SRC sh
   shika system
   koshi format
-  hm update
+  bashame update
 #+END_SRC
 
 (Loaded to =$PATH= from =./bin= with direnv)

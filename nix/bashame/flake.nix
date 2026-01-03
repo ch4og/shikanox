@@ -1,7 +1,7 @@
-# SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
+# SPDX-FileCopyrightText: 2025-2026 Nikita Mitasov <me@ch4og.com>
 # SPDX-License-Identifier: GPL-3.0-or-later
 {
-  description = "Nix home-manager";
+  description = "Bashame (home-manager config)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
