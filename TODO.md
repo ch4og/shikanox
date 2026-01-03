@@ -24,3 +24,5 @@
 - [ ] Decrypt partitions from /boot keyfile
 - [ ] yubikey as user password
 - [ ] consider moving dotfiles to just stow so it can be deployed without reconfiguring guix home
+- [ ] Remove nix-go-build-system and use it in dependency
+- [ ] Wakatime package use nix-go-build-system
