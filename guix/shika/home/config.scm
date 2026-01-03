@@ -19,7 +19,6 @@
              (gnu installer utils)
              (nongnu packages nvidia)
              (gnu home services shepherd)
-             (koshi utils config-root)
              (koshi services home-reload-waybar)
              (shika home packages))
 
@@ -48,7 +47,7 @@
 
                                      (service home-dotfiles-service-type
                                               (home-dotfiles-configuration (directories `
-                                                                            (,(string-append config-root "/dotfiles")))
+                                                                            (,(string-append (getcwd) "/../dotfiles")))
                                                                            (layout 'stow)
                                                                            (packages '
                                                                             ("fastfetch"
