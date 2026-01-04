@@ -6,11 +6,12 @@
   #:use-module (gnu artwork)
   #:use-module (gnu bootloader)
   #:use-module (gnu bootloader grub)
+  #:use-module (rosenthal bootloader grub)
   #:use-module (shika lib layout))
 
 (define-public %shika-bootloader-configuration
   (bootloader-configuration
-   (bootloader grub-efi-bootloader)
+   (bootloader grub-efi-luks2-bootloader)
    (targets '("/efi"))
    (keyboard-layout %shika-layout)
    (theme (grub-theme
