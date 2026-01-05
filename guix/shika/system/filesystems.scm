@@ -1,8 +1,9 @@
-;;; SPDX-FileCopyrightText: 2025 Nikita Mitasov <me@ch4og.com>
+;;; SPDX-FileCopyrightText: 2025-2026 Nikita Mitasov <me@ch4og. com>
 ;;; SPDX-License-Identifier: GPL-3.0-or-later
 
 (define-module (shika system filesystems)
-  #:use-module (gnu))
+  #:use-module (gnu)
+  #:use-module (koshi utils filesystems))
 
 (define-public %shika-mapped-devices
   (list (mapped-device
@@ -15,73 +16,71 @@
          (type luks-device-mapping))))
 
 (define-public %shika-file-systems
-  (append (list (file-system
-                 (device "/dev/mapper/root")
-                 (mount-point "/")
-                 (type "btrfs")
-                 (dependencies %shika-mapped-devices)
-                 (needed-for-boot? #t)
-                 (flags '(no-atime))
-                 (options "compress-force=zstd,subvol=root"))
+  (cons*
+   (luks-btrfs
+    #:device "root"
+    #:mount-point "/"
+    #:flags '(no-atime)
+    #:compress '(#t force)
+    #:subvol "root"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/root")
-                 (mount-point "/gnu/store")
-                 (type "btrfs")
-                 (dependencies %shika-mapped-devices)
-                 (needed-for-boot? #t)
-                 (flags '(no-atime))
-                 (options "compress-force=zstd,subvol=gnu-store"))
+   (luks-btrfs
+    #:device "root"
+    #:mount-point "/gnu/store"
+    #:flags '(no-atime)
+    #:compress '(#t force)
+    #:subvol "gnu-store"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/root")
-                 (mount-point "/nix")
-                 (type "btrfs")
-                 (needed-for-boot? #t)
-                 (dependencies %shika-mapped-devices)
-                 (flags '(no-atime))
-                 (options "compress-force=zstd,subvol=nix"))
+   (luks-btrfs
+    #:device "root"
+    #:mount-point "/nix"
+    #:flags '(no-atime)
+    #:compress '(#t force)
+    #:subvol "nix"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/root")
-                 (mount-point "/var/log")
-                 (type "btrfs")
-                 (dependencies %shika-mapped-devices)
-                 (needed-for-boot? #t)
-                 (options "compress=no,subvol=log"))
+   (luks-btrfs
+    #:device "root"
+    #:mount-point "/var/log"
+    #:compress #f
+    #:subvol "log"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/home")
-                 (mount-point "/home")
-                 (type "btrfs")
-                 (dependencies %shika-mapped-devices)
-                 (needed-for-boot? #t)
-                 (options "compress=zstd,subvol=home"))
+   (luks-btrfs
+    #:device "home"
+    #:mount-point "/home"
+    #:compress #t
+    #:subvol "home"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/home")
-                 (mount-point "/games")
-                 (type "btrfs")
-                 (needed-for-boot? #t)
-                 (dependencies %shika-mapped-devices)
-                 (options "compress=zstd,subvol=games"))
+   (luks-btrfs
+    #:device "home"
+    #:mount-point "/games"
+    #:compress #t
+    #:subvol "games"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device "/dev/mapper/home")
-                 (mount-point "/swap")
-                 (type "btrfs")
-                 (needed-for-boot? #t)
-                 (flags '(no-atime))
-                 (dependencies %shika-mapped-devices)
-                 (options "compress=no,subvol=swap"))
+   (luks-btrfs
+    #:device "home"
+    #:mount-point "/swap"
+    #:flags '(no-atime)
+    #:compress #f
+    #:subvol "swap"
+    #:mapped-devices %shika-mapped-devices)
 
-                (file-system
-                 (device (uuid "350C-92A0" 'fat))
-                 (mount-point "/efi")
-                 (type "vfat")))
-          %base-file-systems))
+   (file-system
+    (device (uuid "350C-92A0" 'fat))
+    (mount-point "/efi")
+    (type "vfat"))
+
+   %base-file-systems))
 
 (define-public %shika-swap-devices
-  (list
-   (swap-space
-    (target "/swap/swapfile"))))
+  (list (swap-space
+         (target "/swap/swapfile")
+         (dependencies
+          (filter
+           (file-system-mount-point-predicate "/swap")
+           %shika-file-systems)))))
