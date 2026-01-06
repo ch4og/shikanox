@@ -5,7 +5,6 @@
     spotify
     amnezia-vpn
     ayugram-desktop
-    vscode
     wl-clip-persist
   ];
 }
