@@ -3,103 +3,31 @@
 
 (define-module (shika home packages)
   #:use-module (guix utils)
-  #:use-module (gnu packages))
+  #:use-module (gnu packages)
+  #:use-module (shika home packages apps)
+  #:use-module (shika home packages browser)
+  #:use-module (shika home packages development)
+  #:use-module (shika home packages fonts)
+  #:use-module (shika home packages gaming)
+  #:use-module (shika home packages services)
+  #:use-module (shika home packages theming)
+  #:use-module (shika home packages utils)
+  #:use-module (shika home packages wayland))
+
+(define (load-category category)
+  (module-ref (resolve-interface `(shika home packages ,category))
+              (symbol-append '%shika- category '-home-packages)))
+
+(define %package-categories
+  '(apps
+    browser
+    development
+    fonts
+    gaming
+    services
+    theming
+    utils
+    wayland))
 
 (define-public %shika-home-packages
-  (specifications->packages
-   '("arashi-icon-theme"
-     "bat"
-     "bibata-cursor-theme"
-     "bind:utils"
-     "binutils"
-     "blueman"
-     "bluez"
-     "btop"
-     "cliphist"
-     "curl"
-     "direnv"
-     "dmenu-bluetooth"
-     "dust"
-     "emacs-no-x"
-     "eog"
-     "eza"
-     "fastfetch"
-     "fd"
-     "file"
-     "file-roller"
-     "filezilla"
-     "firefox"
-     "flatpak"
-     "font-awesome-nonfree"
-     "fontforge"
-     "font-google-noto"
-     "font-google-noto-emoji"
-     "font-google-noto-sans-cjk"
-     "font-microsoft-web-core-fonts"
-     "fzf"
-     "gamescope"
-     "ghostty"
-     "gimp"
-     "gnome-themes-extra"
-     "gnupg"
-     "grim"
-     "grimblast"
-     "heroic-nvidia"
-     "honkers-railway-launcher-nvidia"
-     "hyprpicker"
-     "imagemagick"
-     "jq"
-     "jujutsu"
-     "kdenlive"
-     "lazygit"
-     "libreoffice"
-     "maak"
-     "mangohud"
-     "mangowc"
-     "mpv-nvidia"
-     "murrine"
-     "ncurses"
-     "networkmanager-dmenu"
-     "nftables"
-     "obs-nvidia"
-     "obs-wlrobs"
-     "pavucontrol"
-     "pcmanfm"
-     "pinentry"
-     "pipewire"
-     "playerctl"
-     "prismlauncher-dolly"
-     "protonup"
-     "qbittorrent-enhanced"
-     "quickshell@git"
-     "remmina"
-     "reuse"
-     "ripgrep"
-     "rofi"
-     "slurp"
-     "starship"
-     "steam-nvidia"
-     "swappy"
-     "swaybg"
-     "swaylock-effects"
-     "swaynotificationcenter"
-     "swww"
-     "tmux"
-     "tokyonight-gtk-theme"
-     "torbrowser"
-     "unzip"
-     "uxplay"
-     "virt-manager"
-     "waybar-experimental"
-     "wireplumber"
-     "wl-clipboard"
-     "wl-mirror"
-     "wlr-dpms"
-     "wtype"
-     ;; "xdg-desktop-portal"
-     "xdg-desktop-portal-gtk"
-     "xdg-desktop-portal-wlr@0.8.1"
-     "xdg-utils"
-     "zapret"
-     "zip"
-     "zoxide")))
+  (apply append (map load-category %package-categories)))

@@ -16,7 +16,6 @@
 - [ ] throne, superfile
 - [ ] lavd sched (maybe ext)
 - [ ] pam u2f
-- [ ] switch to librewolf
 - [ ] imv
 - [ ] literate programming?
 - [ ] autoinstall pre-commit hook
