@@ -8,18 +8,11 @@
 #+HTML: <a href="https://codeberg.org/ch4og/shikanox" rel="nofollow noopener"><img src="https://img.shields.io/badge/source-Codeberg-5993C8?logo=codeberg&logoColor=white&labelColor=24292e"></a>
 #+HTML: <a href="https://gnu.org/software/guile/" rel="nofollow noopener"><img src="https://codeberg.org/luis-felipe/guile-graphics/raw/branch/trunk/badges/gnu-guile-made.svg"></a>
 
-#+HTML: <p align="center"><img src="./assets/screenshot.png" width="70%"/></p>
+A personal WIP GNU/Linux distro based on GNU Guix.
 
-A complete personal config "distro" built on GNU Guix System, GNU Guix Home and Nix Home Manager.
+*** *This channel includes packaged nonfree and proprietary software.*
 
-*** *This repo includes packaged nonfree and proprietary software.*
-
-* This repo defines:
-
-- *[[./guix/shika][guix/shika]]* :: GNU Guix System and Home configurations
-- *[[./guix/koshi][guix/koshi]]* :: GNU Guix Channel with packages and services
-- *[[./nix/bashame][nix/bashame]]* :: Nix Home Manager configuration
-- *[[./dotfiles][dotfiles]]* :: Dotfiles
+**** *Also see [[https://codeberg.org/ch4og/koshinox][Koshinox (my config for Shikanox)]]*
 
 * Add channel to your system
 
@@ -27,6 +20,7 @@ A complete personal config "distro" built on GNU Guix System, GNU Guix Home and 
 (channel
  (name 'shikanox)
  (url "https://codeberg.org/ch4og/shikanox.git")
+ (branch "main")
  (introduction
   (make-channel-introduction
    "fe3b5f72aa676c69f4d43507bdd18fb051906917"
@@ -34,42 +28,15 @@ A complete personal config "distro" built on GNU Guix System, GNU Guix Home and 
     "7C9E 7EBA 828C 58DF DACE  5BED 4DCC 7AB7 FC75 319B"))))
 #+END_SRC
 
-* Dotfiles
-
-Personal dotfiles are organized using a layout compatible with [[https://www.gnu.org/software/stow/manual/stow.html#Introduction][GNU Stow]].
-
-Each subdirectory here represents a *"package"* of configuration files,
-automatically linked into =~= via the =home-dotfiles-service-type=.
-
-** Usage
-
-*** Guix Home
-
-#+begin_src scheme
-  (service home-dotfiles-service-type
-  	 (home-dotfiles-configuration
-  	  (directories '("./dotfiles"))
-  	  (layout 'stow)
-  	  (packages '("fish" "mangowc" "other-package-name"))))
-#+end_src
-
-*** GNU Stow (recommended on non-Guix)
-
-#+begin_src sh
-  cd dotfiles
-  stow fish mangowc other-package-name -t ~
-#+end_src
-
 * Maak file
 
 This repository uses [[https://codeberg.org/jjba23/maak][maak]].
 
-Instead of running long guix and nix invocations manually, you can for example do:
+Instead of running long guix invocations manually, you can for example do:
 
 #+BEGIN_SRC sh
-  maak shika-system
-  maak koshi-fmt
-  maak bashame-update
+  maak fmt
+  maak update
 #+END_SRC
 
 (Hacky maak wrapper binary loaded to =$PATH= with direnv)
