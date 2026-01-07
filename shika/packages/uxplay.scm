@@ -15,34 +15,34 @@
 
 (define-public uxplay
   (package
-   (name "uxplay")
-   (version "1.72.3")
-   (source
-    (origin
-     (method git-fetch)
-     (uri (git-reference
-           (url "https://github.com/FDH2/UxPlay")
-           (commit (string-append "v" version))))
-     (file-name (git-file-name name version))
-     (sha256
-      (base32 "03vmbzxsrz126qk9qbcqdhjqkwml0pf3yhkafx6820m5x0ra4jvk"))))
-   (build-system cmake-build-system)
-   (arguments '(#:tests? #f)) ;; tests do not exist
-   (native-inputs `(,pkg-config))
-   (inputs (list avahi
-                 gst-plugins-base
-                 gstreamer
-                 libplist
-                 libx11
-	               openssl))
-   (propagated-inputs (list gst-plugins-base
-                            gst-plugins-good
-                            gst-plugins-bad
-                            gst-libav))
-   (home-page "https://github.com/FDH2/UxPlay")
-   (synopsis "AirPlay Unix mirroring server")
-   (description
-    "This project is a GPLv3 open source unix AirPlay2 Mirror server for Linux, macOS, and *BSD.")
-   (license license:gpl3)))
+    (name "uxplay")
+    (version "1.72.3")
+    (source
+     (origin
+       (method git-fetch)
+       (uri (git-reference
+              (url "https://github.com/FDH2/UxPlay")
+              (commit (string-append "v" version))))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "03vmbzxsrz126qk9qbcqdhjqkwml0pf3yhkafx6820m5x0ra4jvk"))))
+    (build-system cmake-build-system)
+    (arguments '(#:tests? #f)) ;; tests do not exist
+    (native-inputs `(,pkg-config))
+    (inputs (list avahi
+                  gst-plugins-base
+                  gstreamer
+                  libplist
+                  libx11
+	          openssl))
+    (propagated-inputs (list gst-plugins-base
+                             gst-plugins-good
+                             gst-plugins-bad
+                             gst-libav))
+    (home-page "https://github.com/FDH2/UxPlay")
+    (synopsis "AirPlay Unix mirroring server")
+    (description
+     "This project is a GPLv3 open source unix AirPlay2 Mirror server for Linux, macOS, and *BSD.")
+    (license license:gpl3)))
 
 uxplay

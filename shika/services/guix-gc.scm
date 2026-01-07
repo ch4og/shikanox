@@ -8,12 +8,12 @@
 ;;;
 ;;;   (service guix-gc-service-type
 ;;;            (guix-gc-configuration
-;;;             (schedule "0 2 * * *")        ; At 02:00 daily
-;;;             (delete-generations "3d")))   ; Delete generations older than 3 days
+;;;             (schedule "0 2 * * *")        ;; At 02:00 daily
+;;;             (delete-generations "3d")))   ;; Delete generations older than 3 days
 ;;;
 ;;;   (service guix-gc-service-type
 ;;;            (guix-gc-configuration
-;;;             (delete-generations #f)))     ; Just 'guix gc'
+;;;             (delete-generations #f)))     ;; Just 'guix gc'
 
 (define-module (shika services guix-gc)
   #:use-module (gnu services)
@@ -44,9 +44,9 @@
 
 (define guix-gc-service-type
   (service-type
-   (name 'guix-gc)
-   (description "Automatic Guix garbage collection service using mcron.")
-   (extensions
-    (list (service-extension mcron-service-type
-                             guix-gc-mcron-job)))
-   (default-value (guix-gc-configuration))))
+    (name 'guix-gc)
+    (description "Automatic Guix garbage collection service using mcron.")
+    (extensions
+     (list (service-extension mcron-service-type
+                              guix-gc-mcron-job)))
+    (default-value (guix-gc-configuration))))

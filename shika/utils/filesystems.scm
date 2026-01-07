@@ -21,43 +21,43 @@
 
 (define (check-deps-for-boot deps)
   (let loop
-    ((lst deps))
+      ((lst deps))
     (cond
-      ((null? lst)
-       #f)
-      ((member "root"
-               (mapped-device-targets (car lst)))
-       #t)
-      (else (loop (cdr lst))))))
+     ((null? lst)
+      #f)
+     ((member "root"
+              (mapped-device-targets (car lst)))
+      #t)
+     (else (loop (cdr lst))))))
 
 (define (mapped target)
   (string-append "/dev/mapper/" target))
 
 (define (build-compress-option compress)
   (cond
-    ((list? compress)
-     (if (null? compress) "compress=zstd"
-         (let* ((value (car compress))
-                (force? (and (not (null? (cdr compress)))
-                             (eq? (cadr compress)
-                                  'force))))
-           (cond
-             ((not value)
-              "compress=no")
-             ((eq? value #t)
-              (if force? "compress-force=zstd" "compress=zstd"))
-             ((string? value)
-              (if force?
-                  (string-append "compress-force=" value)
-                  (string-append "compress=" value)))
-             (else (error "compress value must be #f, #t, or a string"))))))
-    ((not compress)
-     "compress=no")
-    ((eq? compress #t)
-     "compress=zstd")
-    ((string? compress)
-     (string-append "compress=" compress))
-    (else (error "compress must be #f, #t, a string, or a list"))))
+   ((list? compress)
+    (if (null? compress) "compress=zstd"
+        (let* ((value (car compress))
+               (force? (and (not (null? (cdr compress)))
+                            (eq? (cadr compress)
+                                 'force))))
+          (cond
+           ((not value)
+            "compress=no")
+           ((eq? value #t)
+            (if force? "compress-force=zstd" "compress=zstd"))
+           ((string? value)
+            (if force?
+                (string-append "compress-force=" value)
+                (string-append "compress=" value)))
+           (else (error "compress value must be #f, #t, or a string"))))))
+   ((not compress)
+    "compress=no")
+   ((eq? compress #t)
+    "compress=zstd")
+   ((string? compress)
+    (string-append "compress=" compress))
+   (else (error "compress must be #f, #t, a string, or a list"))))
 
 (define* (luks-btrfs #:key device
                      mount-point

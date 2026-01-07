@@ -10,7 +10,7 @@
 ;;;
 ;;;   (service polkit-network-manager-service-type
 ;;;            (polkit-network-manager-configuration
-;;;             (group "network")))  ; Override default group 'netdev' to 'network'
+;;;             (group "network")))  ;; Override default group 'netdev' to 'network'
 
 (define-module (shika services polkit-nm)
   #:use-module (gnu services dbus)
@@ -45,12 +45,12 @@
 
 (define-public polkit-network-manager-service-type
   (service-type
-   (name 'polkit-network-manager)
-   (extensions
-    (list (service-extension
-           polkit-service-type
-           (lambda (config)
-             `(,(polkit-network-manager-package config))))))
-   (default-value (polkit-network-manager-configuration))
-   (description
-    "Allow users from specified group to modify NetworkManager settings")))
+    (name 'polkit-network-manager)
+    (extensions
+     (list (service-extension
+            polkit-service-type
+            (lambda (config)
+              `(,(polkit-network-manager-package config))))))
+    (default-value (polkit-network-manager-configuration))
+    (description
+     "Allow users from specified group to modify NetworkManager settings")))

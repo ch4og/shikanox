@@ -65,12 +65,12 @@
 
 (define btrfs-scrub-service-type
   (service-type
-   (name 'btrfs-scrub)
-   (description "Periodically run btrfs scrub on set filesystems.")
-   (extensions
-    (list (service-extension mcron-service-type
-                             btrfs-scrub-mcron-jobs)))
-   (default-value (btrfs-scrub-configuration))))
+    (name 'btrfs-scrub)
+    (description "Periodically run btrfs scrub on set filesystems.")
+    (extensions
+     (list (service-extension mcron-service-type
+                              btrfs-scrub-mcron-jobs)))
+    (default-value (btrfs-scrub-configuration))))
 
 (define-record-type* <btrfs-balance-configuration>
   btrfs-balance-configuration make-btrfs-balance-configuration
@@ -94,9 +94,9 @@
 
 (define btrfs-balance-service-type
   (service-type
-   (name 'btrfs-balance)
-   (description "Periodically run btrfs balance on set filesystems.")
-   (extensions
-    (list (service-extension mcron-service-type
-                             btrfs-balance-mcron-jobs)))
-   (default-value (btrfs-balance-configuration))))
+    (name 'btrfs-balance)
+    (description "Periodically run btrfs balance on set filesystems.")
+    (extensions
+     (list (service-extension mcron-service-type
+                              btrfs-balance-mcron-jobs)))
+    (default-value (btrfs-balance-configuration))))

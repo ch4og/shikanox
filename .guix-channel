@@ -3,8 +3,8 @@
 ;; SPDX-License-Identifier: MIT
 
 (channel
- (version 0)
- (name 'shikanox)
- (url "https://codeberg.org/ch4og/shikanox.git")
- (branch "main"))
+  (version 0)
+  (name 'shikanox)
+  (url "https://codeberg.org/ch4og/shikanox.git")
+  (branch "main"))
 

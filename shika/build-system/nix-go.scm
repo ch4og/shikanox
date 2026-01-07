@@ -25,8 +25,8 @@
 
 (define %nix-go-build-system-modules
   `((guix build utils)
-    ;(guix gexp)
-    ;(guix build-system)
+    ;;(guix gexp)
+    ;;(guix build-system)
     (shika build nix-go-build-system)
     ,@%default-gnu-imported-modules))
 
@@ -83,10 +83,10 @@
 
              (let ((st (stat #$source)))
                (if (eq? (stat:type st) 'directory)
-                 (invoke "cp" "-r" "--reflink=auto" #$source "modRoot")
-                 (begin
-                   (mkdir-p "modRoot")
-                   (invoke "tar" "zxvf" #$source "--strip-components=1" "-C" "modRoot"))))
+                   (invoke "cp" "-r" "--reflink=auto" #$source "modRoot")
+                   (begin
+                     (mkdir-p "modRoot")
+                     (invoke "tar" "zxvf" #$source "--strip-components=1" "-C" "modRoot"))))
 
              (chdir "modRoot")
              (chmod "." #o755)
@@ -117,9 +117,9 @@
   (define (vendor-origin name vendor-hash go-toolchain tidy?)
     (pkgs:origin (method go-vendor-fetch)
                  (uri (go-vendor-config
-                        (url source)
-                        (toolchain go-toolchain)
-                        (tidy? tidy?)))
+                       (url source)
+                       (toolchain go-toolchain)
+                       (tidy? tidy?)))
                  (file-name name)
                  (hash (pkgs:content-hash (nix-base32-string->bytevector vendor-hash) sha256))))
 
@@ -192,38 +192,38 @@
   (define builder
     (with-imported-modules imported-modules
       #~(begin
-          (use-modules #$@(sexp->gexp modules))
+	  (use-modules #$@(sexp->gexp modules))
 
-          (define %outputs
-            #$(outputs->gexp outputs))
+	  (define %outputs
+	    #$(outputs->gexp outputs))
 
-          (nix-go-build #:name #$name
-                        #:source #+source
-                        #:system #$system
-                        #:phases #$phases
-                        #:outputs #$(outputs->gexp outputs)
-                        #:substitutable? #$substitutable?
-                        #:goarch #$goarch
-                        #:goos #$goos
-                        #:ldflags #$ldflags
-                        #:tags #$tags
-                        #:sub-packages (list #$@sub-packages)
-                        #:search-paths '#$(sexp->gexp
-                                           (map search-path-specification->sexp
-                                                search-paths))
-                        #:install-source? #$install-source?
-                        #:build-flags (list #$@build-flags)
-                        #:tests? #$tests?
-                        #:parallel-build? #$parallel-build?
-                        #:parallel-tests? #$parallel-tests?
-                        #:allow-go-reference? #$allow-go-reference?
-                        #:inputs #$(input-tuples->gexp inputs)))))
+	  (nix-go-build #:name #$name
+			#:source #+source
+			#:system #$system
+			#:phases #$phases
+			#:outputs #$(outputs->gexp outputs)
+			#:substitutable? #$substitutable?
+			#:goarch #$goarch
+			#:goos #$goos
+			#:ldflags #$ldflags
+			#:tags #$tags
+			#:sub-packages (list #$@sub-packages)
+			#:search-paths '#$(sexp->gexp
+					   (map search-path-specification->sexp
+						search-paths))
+			#:install-source? #$install-source?
+			#:build-flags (list #$@build-flags)
+			#:tests? #$tests?
+			#:parallel-build? #$parallel-build?
+			#:parallel-tests? #$parallel-tests?
+			#:allow-go-reference? #$allow-go-reference?
+			#:inputs #$(input-tuples->gexp inputs)))))
 
   (mlet %store-monad ((guile (pkgs:package->derivation (or guile (pkgs:default-guile))
                                                        system #:graft? #f)))
     (gexp->derivation name builder
-                      #:system system
-                      #:guile-for-build guile)))
+		      #:system system
+		      #:guile-for-build guile)))
 
 (define nix-go-build-system
   (build-system

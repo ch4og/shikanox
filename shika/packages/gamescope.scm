@@ -27,24 +27,24 @@
 (define-public vkroots
   (let ((commit "5106d8a0df95de66cc58dc1ea37e69c99afc9540"))
     (package
-     (name "vkroots")
-     (version (git-version "0.0.0" "0" commit))
-     (source
-      (origin
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://github.com/misyltoad/vkroots")
-             (commit commit)))
-       (file-name (git-file-name name version))
-       (sha256
-        (base32 "0hrp0xqq93552ipw2bmryixgm1aywnz49xagsx5rwzg2d0hwa0aa"))))
-     (build-system meson-build-system)
-     (home-page "https://github.com/misyltoad/vkroots")
-     (synopsis "A stupid simple method of making Vulkan layers, at home!")
-     (description
-      "Framework for writing Vulkan layers that takes all the
+      (name "vkroots")
+      (version (git-version "0.0.0" "0" commit))
+      (source
+       (origin
+         (method git-fetch)
+         (uri (git-reference
+                (url "https://github.com/misyltoad/vkroots")
+                (commit commit)))
+         (file-name (git-file-name name version))
+         (sha256
+          (base32 "0hrp0xqq93552ipw2bmryixgm1aywnz49xagsx5rwzg2d0hwa0aa"))))
+      (build-system meson-build-system)
+      (home-page "https://github.com/misyltoad/vkroots")
+      (synopsis "A stupid simple method of making Vulkan layers, at home!")
+      (description
+       "Framework for writing Vulkan layers that takes all the
 complexity/hastle away from you! It's so simple!")
-     (license (list license:asl2.0 license:expat)))))
+      (license (list license:asl2.0 license:expat)))))
 
 (define wlroots-for-gamescope
   (shika-git-override
@@ -88,125 +88,125 @@ complexity/hastle away from you! It's so simple!")
 
 (define-public gamescope
   (package
-   (name "gamescope")
-   (version "3.16.19")
-   (source
-    (origin
-     (method git-fetch)
-     (uri (git-reference
-           (url "https://github.com/ValveSoftware/gamescope")
-           (commit version)))
-     (file-name (git-file-name name version))
-     (sha256
-      (base32 "153wiyr48fanm3yialic8hjic4vmprzpj6p503jvqai45lm9rqqv"))))
-   (build-system meson-build-system)
-   (native-inputs (list bash-minimal
-                        pkg-config))
-   (inputs (list eudev
-                 glm
-                 glslang
-                 hwdata
-                 libdecor
-                 libdisplay-info
-                 libx11
-                 libxcomposite
-                 libxcursor
-                 libxdamage
-                 libxext
-                 libxkbcommon
-                 libxmu
-                 libxres
-                 libxtst
-                 libxxf86vm
-                 luajit
-                 pixman
-                 sdl2
-                 stb-image
-                 stb-image-resize
-                 stb-image-write
-                 vkroots
-                 vulkan-loader
-                 wayland
-                 wayland-protocols
+    (name "gamescope")
+    (version "3.16.19")
+    (source
+     (origin
+       (method git-fetch)
+       (uri (git-reference
+              (url "https://github.com/ValveSoftware/gamescope")
+              (commit version)))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "153wiyr48fanm3yialic8hjic4vmprzpj6p503jvqai45lm9rqqv"))))
+    (build-system meson-build-system)
+    (native-inputs (list bash-minimal
+                         pkg-config))
+    (inputs (list eudev
+                  glm
+                  glslang
+                  hwdata
+                  libdecor
+                  libdisplay-info
+                  libx11
+                  libxcomposite
+                  libxcursor
+                  libxdamage
+                  libxext
+                  libxkbcommon
+                  libxmu
+                  libxres
+                  libxtst
+                  libxxf86vm
+                  luajit
+                  pixman
+                  sdl2
+                  stb-image
+                  stb-image-resize
+                  stb-image-write
+                  vkroots
+                  vulkan-loader
+                  wayland
+                  wayland-protocols
 
-                 openvr-for-gamescope
-                 spirv-headers-for-gamescope
-                 reshade-for-gamescope
-                 libliftoff-for-gamescope
-                 wlroots-for-gamescope))
-   (arguments
-    (list
-     #:phases
-     #~(modify-phases %standard-phases
-                      (add-before 'configure 'guix-fake-git
-                                  (lambda _
-                                    (let ((bin (string-append (getcwd) "/.fake-bin"))
-                                          (sh  (string-append #$bash-minimal "/bin/sh")))
-                                      (mkdir-p bin)
-                                      (call-with-output-file (string-append bin "/git")
-                                        (lambda (p)
-                                          (format p "#!~a\nexec echo ~a\n" sh #$version)))
-                                      (chmod (string-append bin "/git") #o755)
-                                      (setenv "PATH" (string-append bin ":" (getenv "PATH")))))) 
-                      
-                      (add-after 'unpack 'inject-reshade
-                                 (lambda* (#:key inputs #:allow-other-keys)
-                                          (let ((reshade       (assoc-ref inputs "reshade"))
-                                                (spirv-headers (assoc-ref inputs "spirv-headers")))
-                                            (copy-recursively reshade "src/reshade")
-                                            (copy-recursively spirv-headers "thirdparty/SPIRV-Headers"))))
+                  openvr-for-gamescope
+                  spirv-headers-for-gamescope
+                  reshade-for-gamescope
+                  libliftoff-for-gamescope
+                  wlroots-for-gamescope))
+    (arguments
+     (list
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-before 'configure 'guix-fake-git
+            (lambda _
+              (let ((bin (string-append (getcwd) "/.fake-bin"))
+                    (sh  (string-append #$bash-minimal "/bin/sh")))
+                (mkdir-p bin)
+                (call-with-output-file (string-append bin "/git")
+                  (lambda (p)
+                    (format p "#!~a\nexec echo ~a\n" sh #$version)))
+                (chmod (string-append bin "/git") #o755)
+                (setenv "PATH" (string-append bin ":" (getenv "PATH")))))) 
+          
+          (add-after 'unpack 'inject-reshade
+            (lambda* (#:key inputs #:allow-other-keys)
+              (let ((reshade       (assoc-ref inputs "reshade"))
+                    (spirv-headers (assoc-ref inputs "spirv-headers")))
+                (copy-recursively reshade "src/reshade")
+                (copy-recursively spirv-headers "thirdparty/SPIRV-Headers"))))
 
-                      (add-after 'inject-reshade 'use-guix-not-fallback
-                                 (lambda* _
-                                          (substitute* "meson.build"
-                                                       ;; we are pinning deps to same commits as upstream
-                                                       ;; so we don't have problem removing this note made for packagers
-                                                       (("'force_fallback_for=wlroots,libliftoff,vkroots',\n")
-                                                        "") 
-                                                       (("error\\('!!!\"force_fallback_for\".*\n")
-                                                        ""))))
+          (add-after 'inject-reshade 'use-guix-not-fallback
+            (lambda* _
+              (substitute* "meson.build"
+                ;; we are pinning deps to same commits as upstream
+                ;; so we don't have problem removing this note made for packagers
+                (("'force_fallback_for=wlroots,libliftoff,vkroots',\n")
+                 "") 
+                (("error\\('!!!\"force_fallback_for\".*\n")
+                 ""))))
 
-                      (add-after 'use-guix-not-fallback 'use-guix-glm
-                                 (lambda* _
-                                          (substitute* "meson.build"
-                                                       (("glm_proj = subproject\\('glm'\\)\n")
-                                                        "")
+          (add-after 'use-guix-not-fallback 'use-guix-glm
+            (lambda* _
+              (substitute* "meson.build"
+                (("glm_proj = subproject\\('glm'\\)\n")
+                 "")
 
-                                                       (("glm_dep = glm_proj.get_variable\\('glm_dep'\\)\n")
-                                                        "glm_dep = dependency('glm', required: true)\n"))))
-                      
-                      (add-after 'use-guix-glm 'use-guix-openvr
-                                 (lambda* _
-                                          (substitute* "meson.build"
-                                                       (("openvr_proj = cmake.subproject\\('openvr', options : openvr_var\\)\n")
-                                                        "")
+                (("glm_dep = glm_proj.get_variable\\('glm_dep'\\)\n")
+                 "glm_dep = dependency('glm', required: true)\n"))))
+          
+          (add-after 'use-guix-glm 'use-guix-openvr
+            (lambda* _
+              (substitute* "meson.build"
+                (("openvr_proj = cmake.subproject\\('openvr', options : openvr_var\\)\n")
+                 "")
 
-                                                       (("openvr_dep = openvr_proj.dependency\\('openvr_api'\\)")
-                                                        "openvr_dep = dependency('openvr', required:true)"))))
-                      
-                      (add-after 'use-guix-openvr 'use-guix-stb
-                                 (lambda* (#:key inputs #:allow-other-keys)
-                                          (let ((stb-image        (assoc-ref inputs "stb-image"))
-                                                (stb-image-resize (assoc-ref inputs "stb-image-resize"))
-                                                (stb-image-write  (assoc-ref inputs "stb-image-write")))
-                                            (substitute* "meson.build"
-                                                         (("stb_proj = subproject\\('stb'\\)\n")
-                                                          "")
+                (("openvr_dep = openvr_proj.dependency\\('openvr_api'\\)")
+                 "openvr_dep = dependency('openvr', required:true)"))))
+          
+          (add-after 'use-guix-openvr 'use-guix-stb
+            (lambda* (#:key inputs #:allow-other-keys)
+              (let ((stb-image        (assoc-ref inputs "stb-image"))
+                    (stb-image-resize (assoc-ref inputs "stb-image-resize"))
+                    (stb-image-write  (assoc-ref inputs "stb-image-write")))
+                (substitute* "meson.build"
+                  (("stb_proj = subproject\\('stb'\\)\n")
+                   "")
 
-                                                         (("stb_dep = stb_proj.get_variable\\('stb_dep'\\)\n")
-                                                          (string-append
-                                                           "stb_dep = declare_dependency(\n"
-                                                           "  include_directories: [\n"
-                                                           "    include_directories('" stb-image "/include'),\n"
-                                                           "    include_directories('" stb-image-resize "/include'),\n"
-                                                           "    include_directories('" stb-image-write "/include')\n"
-                                                           "  ]\n"
-                                                           ")\n"))))))))) 
+                  (("stb_dep = stb_proj.get_variable\\('stb_dep'\\)\n")
+                   (string-append
+                    "stb_dep = declare_dependency(\n"
+                    "  include_directories: [\n"
+                    "    include_directories('" stb-image "/include'),\n"
+                    "    include_directories('" stb-image-resize "/include'),\n"
+                    "    include_directories('" stb-image-write "/include')\n"
+                    "  ]\n"
+                    ")\n"))))))))) 
 
-   (home-page "https://github.com/ValveSoftware/gamescope")
-   (synopsis "SteamOS session compositing window manager")
-   (description
-    "The micro-compositor formerly known as steamcompmgr")
-   (license license:bsd-2)))
+    (home-page "https://github.com/ValveSoftware/gamescope")
+    (synopsis "SteamOS session compositing window manager")
+    (description
+     "The micro-compositor formerly known as steamcompmgr")
+    (license license:bsd-2)))
 
 gamescope

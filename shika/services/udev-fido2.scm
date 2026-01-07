@@ -8,7 +8,7 @@
 ;;;
 ;;;   (service udev-fido2-service-type
 ;;;            (udev-fido2-configuration
-;;;             (groups '("plugdev" "users")))) ; Add "users" group as well
+;;;             (groups '("plugdev" "users")))) ;; Add "users" group as well
 ;;;
 
 (define-module (shika services udev-fido2)
@@ -37,11 +37,11 @@
 
 (define-public udev-fido2-service-type
   (service-type
-   (name 'udev-fido2)
-   (description "Udev rules for FIDO2 security keys.")
-   (extensions
-    (list (service-extension udev-service-type
-                             udev-fido2-rules)
-          (service-extension account-service-type
-                             udev-fido2-accounts)))
-   (default-value (udev-fido2-configuration))))
+    (name 'udev-fido2)
+    (description "Udev rules for FIDO2 security keys.")
+    (extensions
+     (list (service-extension udev-service-type
+                              udev-fido2-rules)
+           (service-extension account-service-type
+                              udev-fido2-accounts)))
+    (default-value (udev-fido2-configuration))))
