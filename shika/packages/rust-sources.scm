@@ -92,24 +92,3 @@ backends, and to act as a Spotify Connect receiver.")
        (description
         "Rust bindings for the projectM music visualizer library.")
        (license license:expat)))))
-
-(define-public rust-librespot-0.8.0.28bcb23
-  (let ((commit "28bcb231fe26f4db682eb85d1f7ae43aa1a83896")
-        (revision "0"))
-    (hidden-package
-     (package
-       (inherit rust-librespot-0.8.0.34ed484)
-       (name "rust-librespot")
-       (version (git-version "0.8.0" revision commit))
-       (source
-        (origin
-          (method git-fetch)
-          (uri (git-reference
-                 (url "https://github.com/LargeModGames/spotatui-librespot")
-                 (commit commit)))
-          (file-name (git-file-name name version))
-          (sha256
-           (base32 "0ph5gh9jg5w6q3c1nlp86jyw8xrg55crzqhd4w310byj8xpw1s2r"))))
-       (inputs
-        (shika-cargo-inputs 'rust-spotatui-librespot))
-       (home-page "https://github.com/LargeModGames/spotatui-librespot")))))
