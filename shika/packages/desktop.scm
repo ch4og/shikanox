@@ -14,6 +14,8 @@
   #:use-module (gnu packages linux)
   #:use-module (gnu packages pkg-config)
   #:use-module (gnu packages python)
+  #:use-module (gnu packages rust)
+  #:use-module (gnu packages sqlite)
   #:use-module (gnu packages suckless)
   #:use-module (shika utils cargo)
   #:use-module ((guix licenses) #:prefix license:))
@@ -80,6 +82,47 @@
     (description
      "Manage NetworkManager connections with supported launchers instead of nm-applet.")
     (license license:expat)))
+
+(define-public stash-clipboard
+  (package
+    (name "stash-clipboard")
+    (version "0.5.2")
+    (source
+     (origin
+       (method git-fetch)
+       (uri (git-reference
+              (url "https://github.com/NotAShelf/stash")
+              (commit (string-append "v" version))))
+       (file-name (git-file-name name version))
+       (sha256
+        (base32 "0cihv6aw2ha4hcj0wavbn7qxgfp93cc0r0rdj16p8pyjlhxrhwhy"))))
+    (build-system cargo-build-system)
+    (arguments
+     (list
+      #:rust rust-1.95
+      ;; rust-1.95 has no rustdoc, so do not run doctests.
+      #:cargo-test-flags ''("--release" "--all-targets")
+      #:install-source? #f
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'install 'install-aliases
+            (lambda _
+              (for-each
+               (lambda (name)
+                 (symlink "stash"
+                          (string-append #$output "/bin/" name)))
+               '("stash-copy" "stash-paste" "wl-copy" "wl-paste")))))))
+    (inputs
+     (cons sqlite
+           (shika-cargo-inputs 'stash-clipboard)))
+    (home-page "https://github.com/NotAShelf/stash")
+    (synopsis "Wayland clipboard manager with persistent history")
+    (description
+     "Lightweight and feature-rich Wayland clipboard manager with fast
+persistent history, robust multi-media support, encryption and more.
+It stores and previews clipboard entries (text, images) on the clipboard with
+a neat TUI and advanced scripting capabilities for your integration needs.") 
+    (license license:mpl2.0)))
 
 (define-public hyperheadset
   (package
