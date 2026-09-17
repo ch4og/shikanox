@@ -111,7 +111,7 @@
                (lambda (name)
                  (symlink "stash"
                           (string-append #$output "/bin/" name)))
-               '("stash-copy" "stash-paste" "wl-copy" "wl-paste")))))))
+               '("stash-copy" "stash-paste")))))))
     (inputs
      (cons sqlite
            (shika-cargo-inputs 'stash-clipboard)))
