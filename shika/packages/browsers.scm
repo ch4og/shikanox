@@ -45,6 +45,7 @@
             (symlink launcher (string-append #$output "/bin/librewolf"))))))
     (inputs (list librewolf))
     (native-inputs (list sed))
+    (native-search-paths (package-native-search-paths librewolf))
     (home-page (package-home-page librewolf))
     (synopsis
      (string-append (package-synopsis librewolf)
