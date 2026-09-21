@@ -13,13 +13,13 @@
 (define-public rofi-rbw
   (package
     (name "rofi-rbw")
-    (version "1.6.1")
+    (version "1.7.0")
     (source
      (origin
        (method url-fetch)
        (uri (pypi-uri "rofi_rbw" version))
        (sha256
-        (base32 "0wds4dzs5krh661ardyp69gwn34y5z7z4zy0j95cmjhyxjgxm9a5"))))
+        (base32 "1mqznp6jadrw44av3kmyl1psh563arfxbhh5zrg9igdb702rh1w9"))))
     (build-system pyproject-build-system)
     (arguments (list #:tests? #f))
     (native-inputs (list python-hatchling))
