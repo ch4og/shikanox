@@ -147,7 +147,7 @@ handle entire workflows.  This package disables auto-updates.")
 (define-public cli-proxy-api
   (package
     (name "cli-proxy-api")
-    (version "7.2.112")
+    (version "8.0.4")
     (source
      (origin
        (method git-fetch)
@@ -156,10 +156,10 @@ handle entire workflows.  This package disables auto-updates.")
              (commit (string-append "v" version))))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "0qqzh7vx775jlz5xbxwyskmnmia221qa8nn9igkrpjaj1vkm4ymy"))))
+        (base32 "1n4grsy9jfmx6y135cdpnczbvhrwvg5z83jr31anfs0pxy6283h9"))))
     (build-system nix-go-build-system)
     (arguments
-     `(#:vendor-hash "1iv4hsny5bxgsjx4gylg2p3w2cqlq73v839n3jd2vybw0nf70g8y"
+     `(#:vendor-hash "13yax6lz5dxwk688d6kd1x6bcbggzfdwcpy248qgy2dn3yapm3ja"
        #:tidy? #f
        #:go ,go-1.26
        #:sub-packages ,(list "./cmd/server")
