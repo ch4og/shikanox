@@ -12,8 +12,8 @@
   #:use-module (shika utils cargo)
   #:use-module (guix download))
 
-(define-public rust-librespot-0.8.0.34ed484
-  (let ((commit "34ed484cb54f1217d1347a271eb299bb63444b75")
+(define-public rust-librespot-0.8.0.669e004
+  (let ((commit "669e004ec7a79e6eea0f87779efc69680793d3b7")
         (revision "0"))
     (hidden-package
      (package
@@ -27,7 +27,7 @@
                  (commit commit)))
           (file-name (git-file-name name version))
           (sha256
-           (base32 "025yyn3yd9l1w26czscfkgg7vnasvjn9wxkgnjg38gh557d2asjs"))))
+           (base32 "0mib6vhrmmcwdwl94p69ddqs9gvj2sljh9hb3jv5rrwxcnb1qs82"))))
        (build-system cargo-build-system)
        (arguments
         (list #:skip-build? #t
@@ -49,6 +49,37 @@
 applications to use Spotify's service to control and play music via various
 backends, and to act as a Spotify Connect receiver.")
        (license license:expat)))))
+
+(define-public rust-winit-0.30.13.c8df61a
+  (let ((commit "c8df61a52b8b563e1bb65e0f1d8630289d1c1bd6")
+        (revision "0"))
+    (hidden-package
+     (package
+       (name "rust-winit")
+       (version (git-version "0.30.13" revision commit))
+       (source
+        (origin
+          (method git-fetch)
+          (uri (git-reference
+                 (url "https://github.com/crmne/winit")
+                 (commit commit)))
+          (file-name (git-file-name name version))
+          (sha256
+           (base32 "04ndlmbh44kxvbwvhczr89iiszvihdfiycaacdj665x5rx2vhhr8"))))
+       (build-system cargo-build-system)
+       (arguments
+        (list #:skip-build? #t
+              #:cargo-package-crates
+              ''("dpi"
+                 "winit")))
+       (inputs
+        (shika-cargo-inputs 'rust-crmne-winit))
+       (home-page "https://github.com/rust-windowing/winit")
+       (synopsis "Cross-platform window creation library")
+       (description
+        "winit is a cross-platform library for creating windows and handling
+window events.")
+       (license license:asl2.0)))))
 
 (define-public rust-projectm-sys-1.2.3.454f38c
   (let ((commit "454f38c50a968b13028ab6716d33647b3e99388c")

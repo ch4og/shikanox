@@ -41,7 +41,7 @@
 (define-public spotifast
   (package
     (name "spotifast")
-    (version "0.8.0")
+    (version "0.10.1")
     (source
       (origin
         (method git-fetch)
@@ -50,7 +50,7 @@
                (commit (string-append "v" version))))
         (file-name (git-file-name name version))
         (sha256
-          (base32 "07asmr157l9w96z5swsrfs87vwnn02pyy3mbjx961vifdrf46zvi"))))
+          (base32 "020q10652ag99j37f7l7flflqkn2mr4cfw4prkdj29fyzszb7g5c"))))
     (build-system cargo-build-system)
     (arguments
      (list
@@ -65,7 +65,7 @@
               (substitute* "Cargo.toml"
                 (("\\[patch\\.crates-io\\]" _)
                  "")
-                (("^(projectm-sys|librespot-[a-z-]+) = .*git = .*" _)
+                (("^(projectm-sys|winit|librespot-[a-z-]+) = .*git = .*" _)
                  ""))))
           (replace 'install
             (lambda _
@@ -86,14 +86,15 @@
                      (string-append #$output "/share/icons/hicolor/scalable/apps")))
                 (mkdir-p desktop-directory)
                 (mkdir-p icon-directory)
-                (install-file "packaging/applications/fastpotify.desktop"
+                (install-file "packaging/applications/spotifast.desktop"
                               desktop-directory)
-                (install-file "packaging/icons/fastpotify.svg"
+                (install-file "packaging/icons/spotifast.svg"
                               icon-directory)))))))
     (native-inputs
       (list clang
             cmake-minimal
             dbus
+            nss-certs-for-test
             pkg-config))
     (inputs
      (cons* alsa-lib
