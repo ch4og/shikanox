@@ -86,7 +86,7 @@ exec ~a \"$@\"~%"
 (define-public claude-code-bin
   (package
     (name "claude-code-bin")
-    (version "2.1.238")
+    (version "2.1.285")
     (source
      (origin
        (method url-fetch)
@@ -94,7 +94,7 @@ exec ~a \"$@\"~%"
              "https://github.com/anthropics/claude-code/releases/download/v"
              version "/claude-linux-x64.tar.gz"))
        (sha256
-        (base32 "1474kkvjbkbrhbcxzldddmmmdaaa7gwv7k17ry976hm4al04010m"))))
+        (base32 "0djb8hbaf8613b4074hc4yd5r7b2f5bks4ibg9qhy355953q9phc"))))
     (build-system binary-build-system)
     (supported-systems '("x86_64-linux"))
     (properties '((substitutable? . #f)))
