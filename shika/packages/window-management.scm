@@ -23,7 +23,7 @@
 
 (define-public mangowm
   (package/inherit gnu:mangowm
-    (version "0.16.1")
+    (version "0.18.0")
     (source
       (origin
         (method git-fetch)
@@ -33,7 +33,7 @@
         (file-name (git-file-name "mangowm" version))
         (sha256
           (base32
-            "13a9zfd7crlpaihyxk42xcnl7fjnwajdd4j2j06f6rkjpbjgsrfj"))))))
+            "0rsn0sy8ija7cc6pg83bffwsfc24p6j44bi2mqk9sdb42d1va5w1"))))))
 
 (define-public mangowm-no-xwayland
   (package
