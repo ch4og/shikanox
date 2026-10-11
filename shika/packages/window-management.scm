@@ -3,6 +3,7 @@
 
 (define-module (shika packages window-management)
   #:use-module (guix base32)
+  #:use-module (guix deprecation)
   #:use-module (guix download)
   #:use-module (guix git-download)
   #:use-module (guix gexp)
@@ -21,23 +22,12 @@
   #:use-module (gnu packages xdisorg)
   #:use-module ((guix licenses) #:prefix license:))
 
-(define-public mangowm
-  (package/inherit gnu:mangowm
-    (version "0.18.0")
-    (source
-      (origin
-        (method git-fetch)
-        (uri (git-reference
-               (url "https://github.com/mangowm/mango")
-               (commit version)))
-        (file-name (git-file-name "mangowm" version))
-        (sha256
-          (base32
-            "0rsn0sy8ija7cc6pg83bffwsfc24p6j44bi2mqk9sdb42d1va5w1"))))))
+(define-deprecated/public-alias mangowm
+  gnu:mangowm)
 
 (define-public mangowm-no-xwayland
   (package
-    (inherit mangowm)
+    (inherit gnu:mangowm)
     (name "mangowm-no-xwayland")
     (arguments
      (substitute-keyword-arguments (package-arguments mangowm)
