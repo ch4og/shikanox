@@ -4,5 +4,6 @@
 (define-module (shika packages networkmanager-dmenu)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-18.
 (define-deprecated/public-alias networkmanager-dmenu
   (@ (shika packages desktop) networkmanager-dmenu))

@@ -4,5 +4,6 @@
 (define-module (shika packages mangowm)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-17.
 (define-deprecated/public-alias mangowm
-  (@ (shika packages window-management) mangowm))
+  (@ (gnu packages window-management) mangowm))

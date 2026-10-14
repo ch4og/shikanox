@@ -4,5 +4,6 @@
 (define-module (shika packages bun)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-18.
 (define-deprecated/public-alias bun-bin
   (@ (shika packages development) bun-bin))

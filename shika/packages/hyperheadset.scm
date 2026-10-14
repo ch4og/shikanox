@@ -4,8 +4,10 @@
 (define-module (shika packages hyperheadset)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-24.
 (define-deprecated/public-alias hyperheadset
   (@ (shika packages desktop) hyperheadset))
 
+;; INFO: Deprecated at 2026-08-24.
 (define-deprecated/public-alias hyperheadset-udev-rules
   (@ (shika packages desktop) hyperheadset-udev-rules))

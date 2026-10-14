@@ -4,5 +4,6 @@
 (define-module (shika packages wakatime)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-18.
 (define-deprecated/public-alias wakatime-cli
   (@ (shika packages development) wakatime-cli))

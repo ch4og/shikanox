@@ -4,5 +4,6 @@
 (define-module (shika packages dmenu-bluetooth)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-18.
 (define-deprecated/public-alias dmenu-bluetooth
   (@ (shika packages desktop) dmenu-bluetooth))

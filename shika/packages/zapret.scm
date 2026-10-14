@@ -4,5 +4,6 @@
 (define-module (shika packages zapret)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-18.
 (define-deprecated/public-alias zapret
   (@ (shika packages networking) zapret))

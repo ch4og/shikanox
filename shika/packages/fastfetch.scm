@@ -4,5 +4,6 @@
 (define-module (shika packages fastfetch)
   #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-17.
 (define-deprecated/public-alias fastfetch-no-zfs
   (@ (shika packages admin) fastfetch-no-zfs))

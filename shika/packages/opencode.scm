@@ -4,5 +4,6 @@
 (define-module (shika packages opencode)
    #:use-module (guix deprecation))
 
+;; INFO: Deprecated at 2026-08-01.
 (define-deprecated/public-alias opencode-bin
   (@ (shika packages ai) opencode-bin))

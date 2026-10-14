@@ -22,6 +22,7 @@
   #:use-module (gnu packages xdisorg)
   #:use-module ((guix licenses) #:prefix license:))
 
+;; INFO: Deprecated at 2026-10-11.
 (define-deprecated/public-alias mangowm
   gnu:mangowm)
 
