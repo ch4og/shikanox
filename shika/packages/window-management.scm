@@ -30,12 +30,12 @@
     (inherit gnu:mangowm)
     (name "mangowm-no-xwayland")
     (arguments
-     (substitute-keyword-arguments (package-arguments mangowm)
+     (substitute-keyword-arguments (package-arguments gnu:mangowm)
        ((#:configure-flags original-flags
          #~(list))
         #~(append #$original-flags
                   '("-Dxwayland=disabled")))))
-    (inputs (modify-inputs (package-inputs mangowm)
+    (inputs (modify-inputs (package-inputs gnu:mangowm)
               (delete "libxcb" "xcb-util-wm")))))
 
 (define-public mangobar
