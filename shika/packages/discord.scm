@@ -92,6 +92,8 @@ It implements Discord's local RPC servers for Rich Presence support.")
           (delete 'check)
           (delete 'repack)
           (delete 'avoid-node-gyp-rebuild)
+          (delete 'build-addon)
+          (delete 'link-bins)
           (add-after 'unpack 'extract-node-modules
             (lambda _
               (invoke "tar" "-xzf" #$equibop-node-modules)))
