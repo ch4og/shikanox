@@ -39,7 +39,7 @@
 (define-public osu-lazer-bin
   (package
     (name "osu-lazer-bin")
-    (version "2026.1005.0-lazer")
+    (version "2026.1117.0-lazer")
     (source
      (origin
        (method url-fetch)
@@ -48,7 +48,7 @@
                        version
                        "/osu.AppImage"))
        (sha256
-        (base32 "0bns13jzhfbn80hypqbcpmvw2a0m9g0y4h6axsdk7a3kagk0hh98"))))
+        (base32 "0b8xxahc4igjx1mx6vqrjdnixb8kimfay02mg0b6y0qwb1dwpfsf"))))
     (build-system binary-build-system)
     (arguments
      (list #:validate-runpath? #f
